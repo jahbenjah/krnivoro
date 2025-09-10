@@ -5,15 +5,16 @@
     {%- include head.html -%}
 </head>
 
-<body>
+<body class="index-page">
 
     {%- include header.html -%}
 
-    <main id="main">
+    <main class="main">
+        {%- include content.html -%}
 
-        {{ content}}
+        <!-- {{ content}} -->
 
-    </main><!-- End #main -->
+    </main>
 
     {%- include footer.html -%}
 </body>
