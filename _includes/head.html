@@ -1,20 +1,43 @@
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - El Krnivoro</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: "El Krnivoro" }}</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines }}{% else %}Experiencias exclusivas, networking de alto nivel y hospitalidad de lujo en Krnivoro.{% endif %}">
+<meta name="keywords" content="Krnivoro, experiencias, networking, lujo, gastronomía, hospitalidad, eventos, ejecutivos, Ensenada, México">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: 'El Krnivoro' }}">
+<meta property="og:description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines }}{% else %}Experiencias exclusivas, networking de alto nivel y hospitalidad de lujo en Krnivoro.{% endif %}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:image" content="{{ site.url }}/assets/img/krnivoro/favicon/apple-touch-icon.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: 'El Krnivoro' }}">
+<meta name="twitter:description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines }}{% else %}Experiencias exclusivas, networking de alto nivel y hospitalidad de lujo en Krnivoro.{% endif %}">
+<meta name="twitter:image" content="{{ site.url }}/assets/img/krnivoro/favicon/apple-touch-icon.png">
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" href="/assets/img/krnivoro/favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/assets/img/krnivoro/favicon/favicon.svg" />
+<link rel="shortcut icon" href="/assets/img/krnivoro/favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/krnivoro/favicon/apple-touch-icon.png" />
+<link rel="manifest" href="/assets/img/krnivoro/favicon/site.webmanifest" />
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  rel="stylesheet">
+<!-- Vendor CSS Files -->
+<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="assets/vendor/aos/aos.css" rel="stylesheet">
+<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<!-- Main CSS File -->
+<link href="assets/css/main.css" rel="stylesheet">
