@@ -41,3 +41,8 @@
 <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 <!-- Main CSS File -->
 <link href="assets/css/main.css" rel="stylesheet">
+
+{%- assign org_jsonld = site.data['krnivoro-organization'] | jsonify -%}
+<script type="application/ld+json">
+{{ org_jsonld }}
+</script>

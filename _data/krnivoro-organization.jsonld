@@ -1,0 +1,24 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Krnivoro",
+  "url": "https://krnivoro.com",
+  "logo": "https://krnivoro.com/assets/img/krnivoro/favicon/apple-touch-icon.png",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+52 661 172 4066",
+      "contactType": "customer service",
+      "areaServed": "MX",
+      "availableLanguage": ["Spanish"]
+    }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "22762 Rancho Oasis",
+    "addressLocality": "Ensenada",
+    "addressRegion": "B.C.",
+    "addressCountry": "MX"
+  },
+  "email": ["info@krnivoro.com", "contacto@krnivoro.com"]
+}
