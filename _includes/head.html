@@ -13,7 +13,7 @@
 <meta property="og:description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines }}{% else %}Experiencias exclusivas, networking de alto nivel y hospitalidad de lujo en Krnivoro.{% endif %}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
-<meta property="og:image" content="{{ site.url }}/assets/img/krnivoro/favicon/apple-touch-icon.png">
+<meta property="og:image" content="{{ site.url }}/assets/img/krnivoro.png">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
@@ -42,7 +42,4 @@
 <!-- Main CSS File -->
 <link href="assets/css/main.css" rel="stylesheet">
 
-{%- assign org_jsonld = site.data['krnivoro-organization'] | jsonify -%}
-<script type="application/ld+json">
-{{ org_jsonld }}
-</script>
+{% include jsonld.html %}
