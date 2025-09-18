@@ -1,4 +1,4 @@
-title: "Krnivoro: Experiencias Gastronómicas y Networking de Alto Nivel"
+title: "Krnivoro| Experiencias Gastronómicas y Networking de Alto Nivel"
 email: info@krnivoro.com
 description: >-
   Conectamos líderes visionarios a través de sabores memorables, vínculos estratégicos y experiencias exclusivas que trascienden fronteras. Vive el networking con lujo, sabor y propósito en Krnivoro.
@@ -16,7 +16,9 @@ github_username:  jekyll
 theme: minima
 plugins:
   - jekyll-feed
-
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
@@ -24,15 +26,25 @@ plugins:
 #
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+collections:
+  servicios:
+    output: true
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - service-details.html
+  - portfolio-details.html
+  - starter-page.html
+  - index_.html
+  - inde.txt
+  - servicios.txt
