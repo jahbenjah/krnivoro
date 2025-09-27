@@ -1,11 +1,26 @@
 ---
 title: Asesoría y Consultoría Laboral
 layout: servicio
-icono: bi-building
-descripcion: "Hospédate en hoteles y residencias de lujo con atención"
-caracteristicas: [uno,dos,tres]
+icono: bi-briefcase
+descripcion: >
+  Brindamos soluciones estratégicas y personalizadas para la gestión
+  laboral, asegurando el cumplimiento normativo y la optimización de
+  recursos humanos.
+caracteristicas:
+  - Diagnóstico y análisis de cumplimiento laboral
+  - Elaboración y revisión de contratos de trabajo
+  - Asesoría en relaciones laborales y resolución de conflictos
+  - Implementación de políticas y procedimientos internos
+  - Capacitación en normatividad laboral vigente
 imagen: /assets/img/services.jpg
-parrafo1: Disfruta de una estancia exclusiva en alojamientos de cinco estrellas
-parrafo2: Nuestro servicio VIP te brinda acceso a instalaciones de primer nivel.
-parrafo3: Vive la tranquilidad y el lujo en ambientes seguros.
+parrafo1: >
+  Nuestro servicio de asesoría laboral está diseñado para ayudarte a
+  cumplir con las normativas vigentes, minimizando riesgos y garantizando
+  la estabilidad de tu empresa.
+parrafo2: >
+  Contamos con un equipo de expertos que te guiarán en la implementación
+  de estrategias efectivas para la gestión de tu capital humano.
+parrafo3: >
+  Confía en nosotros para resolver conflictos laborales, optimizar
+  procesos internos y fortalecer las relaciones con tus colaboradores.
 ---

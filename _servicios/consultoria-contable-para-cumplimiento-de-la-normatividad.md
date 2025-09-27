@@ -1,11 +1,26 @@
 ---
 title: Consultoría Contable para el Cumplimiento
 layout: servicio
-icono: bi-building
-descripcion: "Hospédate en hoteles y residencias de lujo con atención"
-caracteristicas: [uno,dos,tres]
+icono: bi-calculator
+descripcion: >
+  Ofrecemos consultoría contable especializada para garantizar el
+  cumplimiento de las normativas fiscales y financieras, optimizando
+  la gestión de tus recursos.
+caracteristicas:
+  - Revisión y preparación de estados financieros
+  - Cumplimiento de obligaciones fiscales
+  - Asesoría en normatividad contable y fiscal
+  - Implementación de controles financieros internos
+  - Capacitación en mejores prácticas contables
 imagen: /assets/img/services.jpg
-parrafo1: Disfruta de una estancia exclusiva en alojamientos de cinco estrellas
-parrafo2: Nuestro servicio VIP te brinda acceso a instalaciones de primer nivel.
-parrafo3: Vive la tranquilidad y el lujo en ambientes seguros.
+parrafo1: >
+  Nuestro servicio de consultoría contable está diseñado para ayudarte a
+  cumplir con las normativas vigentes, minimizando riesgos y optimizando
+  la gestión de tus recursos.
+parrafo2: >
+  Contamos con un equipo de expertos que te guiarán en la preparación de
+  estados financieros y el cumplimiento de tus obligaciones fiscales.
+parrafo3: >
+  Confía en nosotros para implementar controles internos efectivos y
+  fortalecer la estabilidad financiera de tu empresa.
 ---

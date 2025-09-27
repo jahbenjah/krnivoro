@@ -1,11 +1,26 @@
 ---
-title: Consultoria y Asesoría Fiscal
+title: Consultoría y Asesoría Fiscal
 layout: servicio
-icono: bi-building
-descripcion: "Hospédate en hoteles y residencias de lujo con atención"
-caracteristicas: [uno,dos,tres]
+icono: bi-cash-stack
+descripcion: >
+  Brindamos consultoría fiscal especializada para optimizar tu carga
+  tributaria, asegurando el cumplimiento de las normativas fiscales y
+  maximizando los beneficios para tu empresa.
+caracteristicas:
+  - Planeación fiscal estratégica
+  - Cumplimiento de obligaciones tributarias
+  - Asesoría en auditorías fiscales
+  - Identificación de beneficios fiscales aplicables
+  - Capacitación en normatividad fiscal vigente
 imagen: /assets/img/services.jpg
-parrafo1: Disfruta de una estancia exclusiva en alojamientos de cinco estrellas
-parrafo2: Nuestro servicio VIP te brinda acceso a instalaciones de primer nivel.
-parrafo3: Vive la tranquilidad y el lujo en ambientes seguros.
+parrafo1: >
+  Nuestro servicio de consultoría fiscal está diseñado para ayudarte a
+  cumplir con tus obligaciones tributarias de manera eficiente y
+  estratégica.
+parrafo2: >
+  Contamos con expertos en normatividad fiscal que te guiarán en la
+  planeación y optimización de tus recursos financieros.
+parrafo3: >
+  Confía en nosotros para identificar beneficios fiscales y garantizar
+  el cumplimiento normativo de tu empresa.
 ---

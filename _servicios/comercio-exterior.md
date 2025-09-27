@@ -1,11 +1,26 @@
 ---
 title: Comercio Exterior
 layout: servicio
-icono: bi-building
-descripcion: "Hospédate en hoteles y residencias de lujo con atención"
-caracteristicas: [uno,dos,tres]
+icono: bi-globe
+descripcion: >
+  Facilitamos tus operaciones de comercio exterior con soluciones
+  integrales que garantizan el cumplimiento normativo y la eficiencia
+  en tus transacciones internacionales.
+caracteristicas:
+  - Gestión de importaciones y exportaciones
+  - Cumplimiento de normativas aduaneras
+  - Optimización de procesos logísticos
+  - Asesoría en tratados y acuerdos comerciales
+  - Análisis de mercados internacionales
 imagen: /assets/img/services.jpg
-parrafo1: Disfruta de una estancia exclusiva en alojamientos de cinco estrellas
-parrafo2: Nuestro servicio VIP te brinda acceso a instalaciones de primer nivel.
-parrafo3: Vive la tranquilidad y el lujo en ambientes seguros.
+parrafo1: >
+  Nuestro servicio de comercio exterior está diseñado para simplificar
+  tus operaciones internacionales, asegurando el cumplimiento de
+  normativas y la optimización de recursos.
+parrafo2: >
+  Contamos con expertos en logística y normatividad aduanera que te
+  acompañarán en cada etapa de tus transacciones internacionales.
+parrafo3: >
+  Confía en nosotros para expandir tu negocio a nivel global con
+  estrategias efectivas y soluciones personalizadas.
 ---
