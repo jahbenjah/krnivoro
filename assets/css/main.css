@@ -1707,3 +1707,9 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+
+
+.team .team-member .member-info ul {
+  list-style: none;
+  padding: 0;
+}
