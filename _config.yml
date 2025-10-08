@@ -26,9 +26,9 @@ plugins:
 #
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
-collections:
-  servicios:
-    output: true
+# collections:
+#   servicios:
+#     output: true
 
 exclude:
   - .sass-cache/
@@ -47,4 +47,5 @@ exclude:
   - starter-page.html
   - index_.html
   - inde.txt
+  - servicios.txt
   - servicios.txt
