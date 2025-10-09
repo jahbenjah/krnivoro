@@ -79,9 +79,9 @@
     <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
       <div class="col-xl-10">
         <div class="text-center">
-          <h3>Solicita tu Blindaje Legal con KRNIVORO</h3>
-          <p>Protege tu empresa, patrimonio y legado con asesoría jurídica de clase mundial.<br><br>
-            Completa el formulario y un especialista legal de KRNIVORO te contactará para diseñar tu estrategia de protección personalizada.</p>
+          <h3>Reserva tu experiencia en el Valle con KRNIVORO</h3>
+          <p>Vive el Valle de Guadalupe al máximo: hospedaje, eventos, spa, shopping y maridajes exclusivos.<br><br>
+            Completa el formulario y nuestro equipo te contactará para personalizar tu experiencia.</p>
         </div>
         <div>
           <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
@@ -89,27 +89,34 @@
               <div class="col-md-6">
                 <input type="text" name="name" class="form-control" placeholder="Nombre" required="">
               </div>
-              <div class="col-md-6 ">
+              <div class="col-md-6">
                 <input type="email" class="form-control" name="email" placeholder="Correo" required="">
               </div>
-              <div class="col-md-12">
+              <div class="col-md-6">
                 <input type="text" class="form-control" name="phone" placeholder="Teléfono" required="">
               </div>
-              <div class="col-md-12">
-                <select class="form-control" name="protection_type" required="">
-                  <option value="" disabled selected>Tipo de protección requerida</option>
-                  <option value="Corporativo">Corporativo</option>
-                  <option value="Mercantil">Mercantil</option>
-                  <option value="Penal">Penal</option>
-                  <option value="Internacional">Internacional</option>
+              <div class="col-md-6">
+                <select class="form-control" name="experience_type" required="">
+                  <option value="" disabled selected>Tipo de experiencia</option>
+                  <option value="Hospedaje">Hospedaje</option>
+                  <option value="Evento">Evento</option>
+                  <option value="Spa">Spa</option>
+                  <option value="Shopping">Shopping</option>
+                  <option value="Maridaje">Maridaje</option>
                 </select>
+              </div>
+              <div class="col-md-6">
+                <input type="date" class="form-control" name="date" placeholder="Fecha" required="">
+              </div>
+              <div class="col-md-6">
+                <input type="number" class="form-control" name="guests" placeholder="Nº de invitados" min="1" required="">
               </div>
               <div class="col-md-12 text-center">
                 <div class="loading">Cargando</div>
                 <div class="error-message"></div>
                 <div class="sent-message">¡Tu mensaje ha sido enviado. Gracias!</div>
                 <button type="submit" class="btn btn-primary btn-lg w-100" style="margin-top: 1rem;">
-                  Solicita tu Blindaje Legal con KRNIVORO</button>
+                  Reserva tu experiencia en el Valle con KRNIVORO</button>
               </div>
             </div>
           </form>
