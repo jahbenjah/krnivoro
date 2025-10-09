@@ -1,7 +1,7 @@
 ---
-title: KRNIVORO Legal Protection
+title: KRNIVORO Store – Select Cuts & Premium Nutrition
 layout: default 
 ---
 
-{%- include legalprotection.html -%}
+{%- include store.html -%}
 
