@@ -165,30 +165,118 @@
 </section>
 
 
-<section id="stats" class="stats section">
-
+<section id="mapa-interactivo" class="section">
   <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-    <div class="row gy-4 align-items-center justify-content-between">
-
-      <div class="col-lg-5">
-        <img src="/assets/img/krnivoro/experiencias/014410.webp" alt="" class="img-fluid">
-      </div>
-
-      <div class="col-lg-6">
-
-        <h3 class="fw-bold fs-2 mb-3">Nuestra Promesa Legal</h3>
-        <p><b>En KRNIVORO Legal Protection</b> blindamos lo más valioso: tu negocio, tu patrimonio y tu legado.
-          Con alianzas con los mejores despachos jurídicos de México y el extranjero, ofrecemos un conjunto integral de
-          soluciones en derecho corporativo, mercantil, penal e internacional.
-        </p>
-
-      </div>
-
+    <div class="section-title text-center mb-5">
+      <h2>Mapa de Experiencias</h2>
+      <p>Descubre los destinos KRNIVORO Outdoor en el noroeste de México</p>
     </div>
-
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div id="krnivoro-map" style="width: 100%; height: 480px; border-radius: 16px; overflow: hidden;"></div>
+      </div>
+    </div>
   </div>
 
+  <!-- Modal para info de cada pin -->
+  <div class="modal fade" id="mapPinModal" tabindex="-1" aria-labelledby="mapPinModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="mapPinModalLabel">Destino</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img id="mapPinImg" src="" alt="" class="img-fluid rounded mb-3" style="max-height:200px;">
+          <p id="mapPinDesc"></p>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <a id="mapPinReserva" href="#call-to-action" class="btn btn-primary">Reserva tu experiencia</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Coordenadas y datos de los destinos
+    const krnivoroLocations = [
+      {
+        name: 'Sonora',
+        lat: 28.4636,
+        lng: -110.9265,
+        img: '/assets/img/krnivoro/outdor/pescadeportiva.jpg',
+        desc: 'Pesca deportiva y cacería en ranchos cinegéticos y costas de Sonora.'
+      },
+      {
+        name: 'Ensenada',
+        lat: 31.8667,
+        lng: -116.5964,
+        img: '/assets/img/krnivoro/outdor/krnivoropesca.jpeg',
+        desc: 'Pesca deportiva, surf y experiencias outdoor en Ensenada.'
+      },
+      {
+        name: 'Tijuana',
+        lat: 32.5149,
+        lng: -117.0382,
+        img: '/assets/img/krnivoro/outdor/padel.jpg',
+        desc: 'Golf, pádel, raquetball y surf en Tijuana.'
+      },
+      {
+        name: 'Rosarito',
+        lat: 32.3667,
+        lng: -117.0617,
+        img: '/assets/img/krnivoro/outdor/golfbajamar.jpeg',
+        desc: 'Golf frente al mar y surf en Rosarito.'
+      },
+      {
+        name: 'Los Cabos',
+        lat: 22.8905,
+        lng: -109.9167,
+        img: '/assets/img/krnivoro/outdor/krnivoroGolf.jpg',
+        desc: 'Golf, pesca, snorkel y surf en Los Cabos.'
+      }
+    ];
+
+    // Cargar mapa con Leaflet.js
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof L === 'undefined') {
+        var leafletScript = document.createElement('script');
+        leafletScript.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+        leafletScript.onload = initKrnivoroMap;
+        document.body.appendChild(leafletScript);
+        var leafletCSS = document.createElement('link');
+        leafletCSS.rel = 'stylesheet';
+        leafletCSS.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+        document.head.appendChild(leafletCSS);
+      } else {
+        initKrnivoroMap();
+      }
+    });
+
+    function initKrnivoroMap() {
+      var map = L.map('krnivoro-map').setView([28.5, -112], 5);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+      krnivoroLocations.forEach(function (loc) {
+        var marker = L.marker([loc.lat, loc.lng]).addTo(map);
+        marker.on('click', function () {
+          document.getElementById('mapPinModalLabel').textContent = loc.name;
+          document.getElementById('mapPinImg').src = loc.img;
+          document.getElementById('mapPinImg').alt = loc.name;
+          document.getElementById('mapPinDesc').textContent = loc.desc;
+          var reservaBtn = document.getElementById('mapPinReserva');
+          reservaBtn.href = '#call-to-action';
+          if (window.bootstrap && bootstrap.Modal) {
+            var modal = new bootstrap.Modal(document.getElementById('mapPinModal'));
+            modal.show();
+          } else {
+            document.getElementById('mapPinModal').style.display = 'block';
+          }
+        });
+      });
+    }
+  </script>
 </section>
 
 <section id="portfolio" class="portfolio section">
