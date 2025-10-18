@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+
+<head>
+    {%- include head.html -%}
+</head>
+
+<body class="index-page">
+
+    {%- include header.html -%}
+
+    <main class="main">
+        <!-- Page Title -->
+        <div class="page-title" data-aos="fade">
+            <div class="heading">
+                <div class="container">
+                    <div class="row d-flex justify-content-center text-center">
+                        <div class="col-lg-8">
+                            <h1>{{page.title}}</h1>
+                            <p class="mb-0">{{page.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="breadcrumbs">
+                <div class="container">
+                    <ol>
+                        <li><a href="/index.html">Inicio</a></li>
+                        <li><a href="/KRNIVORO_blog.html">Blog</a></li>
+                        <li class="current">{{page.title}}</li>
+                    </ol>
+                </div>
+            </nav>
+        </div>
+      
+        <section id="service-details" class="service-details section">
+
+            <div class="container">
+
+                <div class="row gy-5">
+
+                    <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
+                        <img src="{{ page.imagen }}" alt="" class="img-fluid services-img">
+                        <h3>
+                            {{ page.title }}
+                        </h3>
+                        
+                            {{ page.content }}
+                    </div>
+                    
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    
+                        <div class="service-box">
+                            <h4>Ultimos Articulos</h4>
+                            <div class="services-list">
+                                {% assign related_posts = site.posts | slice: 0, 5 %}
+                                {% for post in related_posts %}
+                                    <a href="{{ post.url }}" {% if post.url == page.url %}class="active"{% endif %}>
+                                        <i class="bi bi-arrow-right-circle"></i>
+                                        <span>{{ post.title }}</span>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    
+                   
+                    
+                        <div class="help-box d-flex flex-column justify-content-center align-items-center">
+                            <i class="bi bi-headset help-icon"></i>
+                            <h4>¿Tienes alguna pregunta?</h4>
+                            <p class="d-flex align-items-center mt-2 mb-0"><i class="bi bi-telephone me-2"></i>
+                                <span>+52 661 172 4066</span></p>
+                            <p class="d-flex align-items-center mt-1 mb-0"><i class="bi bi-envelope me-2"></i> <a
+                                    href="mailto:info@krnivoro.com">info@krnivoro.com</a></p>
+                        </div>
+                    
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+        </section>
+        
+    </main>
+    
+    {%- include footer.html -%}
+</body>
+
+</html>

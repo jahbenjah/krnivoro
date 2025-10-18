@@ -1,6 +1,8 @@
 ---
 title: KRNIVORO Business Week Lo más importante que debes saber
-layout: servicio
+layout: blog
+autor: Equipo KRNIVORO
+seccion: Negocios & Estrategia
 ---
 
 📈 KRNIVORO Business Week: Lo más importante que debes saber

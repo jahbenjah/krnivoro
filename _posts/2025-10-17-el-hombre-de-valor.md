@@ -1,6 +1,8 @@
 ---
 title: El Hombre de Valor La filosofía KRNIVORO hecha historia
-layout: servicio
+layout: blog
+autor: Equipo KRNIVORO
+seccion: Mindset & Liderazgo
 ---
 
 *“El Hombre de Valor”** — la filosofía KRNIVORO hecha historia.
