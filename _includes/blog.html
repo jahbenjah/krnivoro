@@ -1,0 +1,29 @@
+<section id="blog" class="blog section">
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Blog</h2>
+    <p>Nuestras últimas entradas</p>
+  </div>
+
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-12" data-aos="fade-up">
+        <ul class="list-unstyled">
+          {% for post in site.posts %}
+          <li class="mb-3">
+            <a href="{{ post.url }}" class="h5 text-decoration-none">{{ post.title }}</a>
+            <div class="small text-muted">{{ post.date | date: "%b %d, %Y" }}</div>
+            <div class="mt-2">
+              <!-- Botones de compartir: Twitter, Facebook, LinkedIn -->
+              <a class="btn btn-sm btn-outline-primary me-1" href="https://twitter.com/intent/tweet?text={{ post.title | url_encode }}&url={{ site.url }}{{ post.url }}" target="_blank" rel="noopener">Twitter</a>
+              <a class="btn btn-sm btn-outline-primary me-1" href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ post.url | uri_escape }}" target="_blank" rel="noopener">Facebook</a>
+              <a class="btn btn-sm btn-outline-primary me-1" href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ post.url | uri_escape }}&title={{ post.title | url_encode }}" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</section>
