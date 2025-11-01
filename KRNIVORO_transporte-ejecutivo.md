@@ -1,7 +1,6 @@
 ---
-title: KRNIVORO – Sección Médica Premium
+title: KRNIVORO – Transporte Ejecutivo
 layout: default 
 ---
 
-{%- include seccionmedicapremium.html -%}
-
+{%- include transporteejecutivo.html -%}
