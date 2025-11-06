@@ -46,55 +46,150 @@
 
 </section>
 
-<section>
+<section id="join-directorio">
     <div class="container section-title" data-aos="fade-up">
-        <h2>Directorio</h2>
+        <h2>Únete al Directorio</h2>
         <p>Forma parte del Directorio de Profesionales.</p>
     </div>
-    <div class="container">
-        <div class="row">
-            <form action=" forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
-                data-aos-delay="200">
-                <div class="row gy-4">
-                    <div class="col-md-6">
-                        <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+            <!-- Vista previa de perfil -->
+            <div class="col-md-4">
+                <div class="card text-center p-3">
+                    <div class="mx-auto mb-3" style="width:120px; height:120px;">
+                        <img id="preview-imagen" src="/assets/img/team/default-avatar.png" alt="Previsualización"
+                            class="rounded-circle" style="width:120px; height:120px; object-fit:cover;">
                     </div>
-                    <div class="col-md-6">
-                        <input type="email" name="email" class="form-control" placeholder="Email" required>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" name="telefono" class="form-control" placeholder="Teléfono" required>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" name="puesto" class="form-control" placeholder="Puesto" required>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" name="empresa" class="form-control" placeholder="Empresa" required>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" name="ciudad" class="form-control" placeholder="Ciudad" required>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" name="estado" class="form-control" placeholder="Estado" required>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" name="pais" class="form-control" placeholder="País" required>
-                    </div>
-                    <div class="col-md-12">
-                        <input type="text" name="imagen" class="form-control" placeholder="URL de imagen (opcional)">
-                    </div>
-                    <div class="col-md-12 text-center">
-                        <div class="loading">Cargando</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">¡Tu mensaje ha sido enviado. Gracias!</div>
-                        <button type="submit">Guardar en Directorio</button>
-                    </div>
+                    <h5 id="preview-nombre">Nombre Apellido</h5>
+                    <p id="preview-puesto" class="text-muted mb-1">Puesto</p>
+                    <p id="preview-empresa" class="mb-1">Empresa</p>
+                    <p id="preview-ubicacion" class="text-muted small">Ciudad, Estado, País</p>
                 </div>
-            </form>
+            </div>
+
+            <!-- Formulario -->
+            <div class="col-md-8">
+                <form action="forms/contact.php" method="post" class="php-email-form" enctype="multipart/form-data">
+                    <div class="row gy-3">
+                        <div class="col-md-6">
+                            <label class="form-label visually-hidden" for="nombre">Nombre</label>
+                            <input id="nombre" type="text" name="nombre" class="form-control" placeholder="Nombre"
+                                required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label visually-hidden" for="email">Email</label>
+                            <input id="email" type="email" name="email" class="form-control" placeholder="Email"
+                                required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label visually-hidden" for="telefono">Teléfono</label>
+                            <input id="telefono" type="text" name="telefono" class="form-control"
+                                placeholder="Teléfono" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label visually-hidden" for="puesto">Puesto</label>
+                            <input id="puesto" type="text" name="puesto" class="form-control" placeholder="Puesto"
+                                required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label visually-hidden" for="empresa">Empresa</label>
+                            <input id="empresa" type="text" name="empresa" class="form-control" placeholder="Empresa"
+                                required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label visually-hidden" for="telefono">Ciudad</label>
+                            <input id="ciudad" type="text" name="ciudad" class="form-control" placeholder="Ciudad"
+                                required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label visually-hidden" for="estado">Estado</label>
+                            <input id="estado" type="text" name="estado" class="form-control" placeholder="Estado"
+                                required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label visually-hidden" for="pais">País</label>
+                            <input id="pais" type="text" name="pais" class="form-control" placeholder="País" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="bio" class="form-label">Biografía / Servicios (opcional)</label>
+                            <textarea id="bio" name="bio" rows="3" class="form-control"
+                                placeholder="Descripción breve"></textarea>
+                        </div>
+
+                        <div class="col-md-8">
+                            <label for="imagen_file" class="form-label">Subir imagen de perfil (opcional)</label>
+                            <input id="imagen_file" name="imagen_file" type="file" accept="image/*" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="imagen" class="form-label">o URL de imagen</label>
+                            <input id="imagen" type="url" name="imagen" class="form-control"
+                                placeholder="https://... (opcional)">
+                        </div>
+
+                        <div class="col-12 text-center">
+                            <div class="loading" style="display:none;">Cargando</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message" style="display:none;">¡Tu perfil ha sido guardado. Gracias!</div>
+                            <button type="submit" class="btn btn-primary btn-lg mt-2">Guardar en Directorio</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
+
+    <script>
+        // Previsualización de imagen y sincronización de campos de vista previa
+        (function () {
+            const fileInput = document.getElementById('imagen_file');
+            const urlInput = document.getElementById('imagen');
+            const preview = document.getElementById('preview-imagen');
+
+            const nombre = document.getElementById('nombre');
+            const puesto = document.getElementById('puesto');
+            const empresa = document.getElementById('empresa');
+            const ciudad = document.getElementById('ciudad');
+            const estado = document.getElementById('estado');
+            const pais = document.getElementById('pais');
+
+            function updatePreviewText() {
+                document.getElementById('preview-nombre').textContent = nombre.value || 'Nombre Apellido';
+                document.getElementById('preview-puesto').textContent = puesto.value || 'Puesto';
+                document.getElementById('preview-empresa').textContent = empresa.value || 'Empresa';
+                const loc = [ciudad.value, estado.value, pais.value].filter(Boolean).join(', ');
+                document.getElementById('preview-ubicacion').textContent = loc || 'Ciudad, Estado, País';
+            }
+
+            nombre.addEventListener('input', updatePreviewText);
+            puesto.addEventListener('input', updatePreviewText);
+            empresa.addEventListener('input', updatePreviewText);
+            ciudad.addEventListener('input', updatePreviewText);
+            estado.addEventListener('input', updatePreviewText);
+            pais.addEventListener('input', updatePreviewText);
+
+            fileInput.addEventListener('change', function (e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = function (ev) {
+                    preview.src = ev.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+
+            urlInput.addEventListener('input', function () {
+                const val = urlInput.value.trim();
+                if (val) preview.src = val;
+            });
+        })();
+    </script>
 </section>
-<section id="join-directorio" class="starter-section join-directorio section">
+<section id="call-directorio" class="starter-section join-directorio section">
     <div class="container section-title" data-aos="fade-up">
         <h2>Únete al Directorio</h2>
         <p>Potencia tu red de contactos con discreción, seguridad y excelencia.</p>
@@ -102,7 +197,7 @@
     <div class="container">
         <div class="row">
             <div class="col text-center">
-                <a href="/join-directorio.html" class="btn btn-primary btn-lg">Únete al Directorio</a>
+                <a href="#join-directorio" class="btn btn-primary btn-lg">Únete al Directorio</a>
             </div>
         </div>
     </div>
