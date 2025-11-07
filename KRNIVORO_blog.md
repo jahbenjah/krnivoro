@@ -1,6 +1,6 @@
 ---
 title: KRNIVORO Blog 
-layout: default 
+layout: pagina
 ---
 
 {%- include blog.html -%}
