@@ -10,7 +10,7 @@ facebook_page: krnivoro
 instagram_username: krnivoro
 lang: es_MX
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://krnivoro.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://krnivoro.com/" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
 google_analytics: G-EJ1YZFT2KJ
