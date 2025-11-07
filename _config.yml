@@ -3,7 +3,7 @@ email: info@krnivoro.com
 phone: +52 661 172 4066
 address: Rancho Oasis, 22760 Ensenada B.C México
 description: >-
-  Conectamos líderes visionarios a través de sabores memorables, vínculos estratégicos y experiencias exclusivas que trascienden fronteras. Vive el networking con lujo, sabor y propósito en Krnivoro.
+  Conectamos líderes visionarios a través de sabores memorables, vínculos estratégicos y experiencias exclusivas que trascienden fronteras.
 image: "/assets/img/krnivoro/favicon/apple-touch-icon.png"
 twitter_username: krnivoro
 facebook_page: krnivoro
@@ -13,6 +13,8 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://krnivoro.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
+google_analytics: G-EJ1YZFT2KJ
+
 
 # Build settings
 theme: minima
@@ -26,7 +28,7 @@ twitter:
   username: CentroRosarito
   card: summary
 
-  
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
