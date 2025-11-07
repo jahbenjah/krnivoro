@@ -51,3 +51,16 @@ exclude:
   - inde.txt
   - servicios.txt
   - servicios.txt
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      lang: "es-mx"
+      lazy: true
+      image: 
+        path: /assets/img/logo-krnivoro-og.jpg
+        height: 200
+        width: 200
+      author: Rosarito Centro
