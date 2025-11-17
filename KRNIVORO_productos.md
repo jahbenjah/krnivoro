@@ -1,6 +1,6 @@
 ---
 title: KRNIVORO Store – Nuestros productos
-layout: default
+layout: pagina
 ---
 
 {%- include carnes.html -%}
