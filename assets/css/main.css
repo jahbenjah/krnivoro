@@ -876,7 +876,8 @@ section,
 }
 
 .hero .icon-box {
-  background: url(/assets/img/krnivoro/background/fondower.webp);
+  background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+  url(/assets/img/krnivoro/background/fondower.webp) center/cover no-repeat;
   opacity: 70%;
   padding: 30px 20px;
   transition: ease-in-out 0.3s;
@@ -888,79 +889,13 @@ section,
   align-items: center;
   justify-content: center;
 }
-
-.hero .icon-box2 {
-  background: url(/assets/img/krnivoro/krnivorosos/krnivorosos1.jpg);
-  opacity: 70%;
-  height: auto;
-  width: auto;
-  padding: 30px 20px;
-  transition: ease-in-out 0.3s;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
-  height: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.hero section .dark-background {
+  position: relative;
+  background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+  url(/assets/img/krnivoro/background/fondower.webp) center/cover no-repeat;
+  padding: 120px 0;
+  color: #fff;
 }
-
-.hero .icon-box3{
-  background: url(/assets/img/krnivoro/imagenes/asesoría-y-consultoría-legal.jpg);
-  opacity: 70%;
-  padding: 30px 20px;
-  transition: ease-in-out 0.3s;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
-  height: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero .icon-box4{
-  background: url(/assets/img/krnivoro/imagenes/asesoría-y-consultoría-legal.jpg);
-  opacity: 70%;
-  padding: 30px 20px;
-  transition: ease-in-out 0.3s;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
-  height: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero .icon-box5{
-  background: url(/assets/img/krnivoro/imagenes/asesoría-y-consultoría-legal.jpg);
-  opacity: 70%;
-  padding: 30px 20px;
-  transition: ease-in-out 0.3s;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
-  height: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero .icon-box6{
-  background: url(/assets/img/krnivoro/imagenes/asesoría-y-consultoría-legal.jpg);
-  opacity: 70%;
-  padding: 30px 20px;
-  transition: ease-in-out 0.3s;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
-  height: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 .hero .icon-box i {
   font-size: 32px;
   line-height: 1;
