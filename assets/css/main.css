@@ -967,6 +967,71 @@ section,
   margin-bottom: 0;
 }
 
+/* CARRUSEL*/
+.img-carousel {
+  width: 100%;
+  height: 350px; /* Ajusta la altura final que quieres */
+  object-fit: contain; /* Imagen completa, no recortada */
+  display: block;
+  margin: 0 auto;
+}
+.carousel-caption-custom {
+  position: absolute;
+  bottom: 20px; /* lo sube o baja */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: 15px 20px;
+  width: 30%;/* ajusta el ancho del recuadro */
+  background: rgba(0, 0, 0, 0.45); /* fondo transparente */
+  border-radius: 10px;
+  color: white;
+}
+
+.carousel-caption-custom h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-color) /* amarillo como en tu ejemplo */
+}
+
+.carousel-caption-custom p {
+  margin: 5px 0 0 0;
+  font-size: 1rem;
+}
+.carousel-indicators-custom {
+  position: absolute;
+  bottom: 15px; /* ajusta la separación del borde */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 6px; /* separación entre puntos */
+  z-index: 10;
+}
+
+.carousel-indicators-custom button {
+  width: 10px;
+  height: 10px;
+  background-color: #FFD600; /* amarillo como en la imagen */
+  border: none;
+  border-radius: 50%;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.carousel-indicators-custom button.active {
+  opacity: 1;
+  transform: scale(1.2); /* puntito activo más grande */
+}
+
+.carousel-indicators-custom button:hover {
+  opacity: 0.9;
+}
+
+
+
+
+
 /*--------------------------------------------------------------
 # Clients Section
 --------------------------------------------------------------*/
