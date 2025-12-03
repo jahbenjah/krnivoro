@@ -1028,10 +1028,38 @@ section,
   opacity: 0.9;
 }
 
+/* WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    bottom: 60px;
+    right: 25px;
+    background: #25D366;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    text-decoration: none;
+    z-index: 9999;
+    transition: 0.3s ease;
+}
 
+.whatsapp-float:hover {
+    background: #1ebe5d;
+    transform: translateY(-2px);
+}
 
+.whatsapp-icon {
+    width: 24px;
+    height: 24px;
+}
 
-
+.whatsapp-text {
+    font-size: 16px;
+}
 /*--------------------------------------------------------------
 # Clients Section
 --------------------------------------------------------------*/
