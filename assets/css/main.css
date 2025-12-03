@@ -1028,6 +1028,30 @@ section,
   opacity: 0.9;
 }
 
+/* responsive celular */
+@media (max-width: 768px) {
+
+  .img-carousel {
+    height: auto;   /* evita distorsión */
+    max-height: 250px; /* controla el tamaño sin que se deforme */
+    object-fit: cover; 
+  }
+
+  .carousel-caption-custom {
+    width: 80%;  /* más ancho para móviles */
+    padding: 10px 15px;
+    bottom: 10px;
+  }
+
+  .carousel-caption-custom h3 {
+    font-size: 1.1rem;
+  }
+
+  .carousel-caption-custom p {
+    font-size: 0.9rem;
+  }
+}
+
 /* WhatsApp */
 .whatsapp-float {
     position: fixed;
