@@ -24,6 +24,14 @@
   $contact->subject = $_POST['subject'];
   $contact->message = $_POST['message'];
 
+  $contact->add_message( $_POST['name'], 'From');
+  $contact->add_message( $_POST['email'], 'Email');
+  $contact->add_message( $_POST['company'], 'Company');
+  $contact->add_message( $_POST['subject'], 'Subject');
+  $contact->add_message( $_POST['message'], 'Message', 10);
+
+  echo $contact->send();
+
 
   // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
   /*
