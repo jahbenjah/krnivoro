@@ -18,6 +18,7 @@ require("../assets/vendor/PHPMailer/src/SMTP.php");
  
  $name = $_POST['name'];
  $email = $_POST['email'];
+ $company = $_POST['company'];
  $subject = $_POST['subject'];
  $message = $_POST['message'];
 
