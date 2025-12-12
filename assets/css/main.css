@@ -974,6 +974,7 @@ section,
   object-fit: contain; /* Imagen completa, no recortada */
   display: block;
   margin: 0 auto;
+  border-radius: 10px;
 }
 .carousel-caption-custom {
   position: absolute;
