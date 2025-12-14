@@ -29,24 +29,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Iniciar Sesión - Krnivoro">
   <meta property="og:description" content="Acceso privado para administración de Krnivoro.">
-  <meta property="og:image" content="/assets/img/logo.png">
+  <meta property="og:image" content="/assets/img/krnivoro/favicon/web-app-manifest-512x512.png">
   <meta property="og:url" content="https://krnivoro.com/admin/login.php">
   <meta property="og:type" content="website">
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Iniciar Sesión - Krnivoro">
   <meta name="twitter:description" content="Acceso privado para administración de Krnivoro.">
-  <meta name="twitter:image" content="/assets/img/logo.png">
+  <meta name="twitter:image" content="/assets/img/krnivoro/favicon/web-app-manifest-512x512.png">
   <meta name="twitter:site" content="https://twitter.com/krnivoro">
-  <link rel="icon" type="image/png" href="/assets/img/favicon.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
-  <link rel="shortcut icon" href="/assets/img/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
-  <!-- Puedes agregar un manifest propio si existe -->
+  <link rel="icon" type="image/png" href="/assets/img/krnivoro/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/assets/img/krnivoro/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/assets/img/krnivoro/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/krnivoro/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/assets/img/krnivoro/favicon/site.webmanifest" />
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
   <style>
     body.bg-light {
       min-height: 100vh;
@@ -59,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       z-index: 0;
-      background-image: url('/assets/img/logo.png');
+      background-image: url('/assets/img/krnivoro/favicon/web-app-manifest-512x512.png');
       background-repeat: repeat;
       background-size: 180px auto;
       opacity: 0.10;
@@ -89,11 +90,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       padding: 8px;
     }
     .btn-primary {
-      background: #a51c30;
+      background: var(--accent-color, #A87B05);
       border: none;
     }
     .btn-primary:hover, .btn-primary:focus {
-      background: #7a1422;
+      background: color-mix(in srgb, var(--accent-color, #A87B05), #000 20%);
     }
   </style>
 </head>
@@ -104,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="card shadow mt-5">
           <div class="card-body">
             <div class="text-center mb-4">
-              <img src="/assets/img/logo.png" alt="Krnivoro" class="logo-login">
+              <img src="/assets/img/krnivoro/favicon/web-app-manifest-512x512.png" alt="Krnivoro" class="logo-login">
             </div>
             <h2 class="mb-4 text-center">Acceso Krnivoro</h2>
             <?php if ($error): ?>
