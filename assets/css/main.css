@@ -1679,6 +1679,19 @@ section,
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 
+/* Galeria fotos dental*/
+.galeria-img {
+  width: 200%;
+  height: 400px;      /* ajustable */
+  object-fit: cover; /* no se deforman */
+  border-radius: 1px;
+}
+
+.servicios-container {
+  position: relative; /* clave */
+}
+
+
 /*--------------------------------------------------------------
 # Portfolio Details Section
 --------------------------------------------------------------*/
