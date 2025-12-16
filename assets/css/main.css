@@ -1691,6 +1691,15 @@ section,
   position: relative; /* clave */
 }
 
+/*Foto hospedaje dos imagenes */
+.galeria-img {
+  width: 100%;
+  height: 480px;      /* tamaño mediano */
+  object-fit: cover;
+  border-radius: 1px;
+}
+
+
 
 /*--------------------------------------------------------------
 # Portfolio Details Section
