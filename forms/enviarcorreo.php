@@ -8,7 +8,7 @@ require("../assets/vendor/PHPMailer/src/SMTP.php");
  $mail->SMTPDebug = 0; // debugging: 1 = errors and messages, 2 = messages only
  $mail->SMTPAuth = true; // authentication enabled
  $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
- $mail->Host = "mail.contacto@krnivoro.com.com";
+ $mail->Host = "mail.contacto@krnivoro.com";
  $mail->Port = 465; //465  or 587
  $mail->IsHTML(true);
  $mail->Username = "contacto@krnivoro.com";
