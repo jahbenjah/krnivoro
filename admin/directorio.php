@@ -12,46 +12,26 @@ if (!isset($_SESSION['usuario_id'])) {
 <html lang="es-mx">
 
 <head>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Krnivoro | Experiencias Gastronómicas y Networking de Alto Nivel</title><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Krnivoro Experiencias Gastronómicas y Networking de Alto Nivel | Conectamos líderes visionarios a través de sabores memorables, vínculos estratégicos y experiencias exclusivas que trascienden fronteras.</title>
-<meta name="generator" content="Jekyll v4.3.4" />
-<meta property="og:title" content="Krnivoro Experiencias Gastronómicas y Networking de Alto Nivel" />
-<meta name="author" content="Rosarito Centro" />
-<meta property="og:locale" content="es_mx" />
-<meta name="description" content="Conectamos líderes visionarios a través de sabores memorables, vínculos estratégicos y experiencias exclusivas que trascienden fronteras." />
-<meta property="og:description" content="Conectamos líderes visionarios a través de sabores memorables, vínculos estratégicos y experiencias exclusivas que trascienden fronteras." />
-<link rel="canonical" href="http://localhost:4000/" />
-<meta property="og:url" content="http://localhost:4000/" />
-<meta property="og:site_name" content="Krnivoro Experiencias Gastronómicas y Networking de Alto Nivel" />
-<meta property="og:image" content="http://localhost:4000/assets/img/logo-krnivoro-og.jpg" />
-<meta property="og:image:height" content="200" />
-<meta property="og:image:width" content="200" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:image" content="http://localhost:4000/assets/img/logo-krnivoro-og.jpg" />
-<meta property="twitter:title" content="Krnivoro Experiencias Gastronómicas y Networking de Alto Nivel" />
-<meta name="twitter:site" content="@CentroRosarito" />
-<meta name="twitter:creator" content="@Rosarito Centro" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Rosarito Centro"},"description":"Conectamos líderes visionarios a través de sabores memorables, vínculos estratégicos y experiencias exclusivas que trascienden fronteras.","headline":"Krnivoro Experiencias Gastronómicas y Networking de Alto Nivel","image":{"height":200,"width":200,"url":"http://localhost:4000/assets/img/logo-krnivoro-og.jpg","@type":"imageObject"},"name":"Krnivoro Experiencias Gastronómicas y Networking de Alto Nivel","url":"http://localhost:4000/"}</script>
-<!-- End Jekyll SEO tag -->
-<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Krnivoro | Experiencias Gastronómicas y Networking de Alto Nivel" /><!-- SEO Meta Tags -->
-<meta name="description" content="">
-<meta name="keywords" content="Krnivoro, experiencias, networking, lujo, gastronomía, hospitalidad, eventos, ejecutivos, Ensenada, México">
-<link rel="canonical" href="http://localhost:4000/">
+<title>Administrador del Directorio | Krnivoro</title>
+<meta name="description" content="Panel de administración para aprobar y gestionar miembros del directorio Krnivoro.">
+<meta name="keywords" content="admin, directorio, gestión, Krnivoro, miembros, aprobación, panel">
+<meta name="author" content="Krnivoro Admin">
+<meta name="robots" content="noindex, nofollow">
 
 <!-- Open Graph / Facebook -->
-<!--meta property="og:title" content="Krnivoro | Experiencias Gastronómicas y Networking de Alto Nivel">
-<meta property="og:description" content="Experiencias exclusivas, networking de alto nivel y hospitalidad de lujo en Krnivoro."-->
+<meta property="og:title" content="Administrador del Directorio | Krnivoro">
+<meta property="og:description" content="Panel de administración para aprobar y gestionar miembros del directorio Krnivoro.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://localhost:4000/">
+<meta property="og:url" content="https://krnivoro.com/admin/directorio.php">
+<meta property="og:image" content="https://krnivoro.com/assets/img/krnivoro/favicon/web-app-manifest-512x512.png">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Krnivoro | Experiencias Gastronómicas y Networking de Alto Nivel">
-<meta name="twitter:description" content="Experiencias exclusivas, networking de alto nivel y hospitalidad de lujo en Krnivoro.">
+<meta name="twitter:title" content="Administrador del Directorio | Krnivoro">
+<meta name="twitter:description" content="Panel de administración para aprobar y gestionar miembros del directorio Krnivoro.">
 <meta name="twitter:image" content="https://krnivoro.com/assets/img/krnivoro/favicon/web-app-manifest-512x512.png">
 
 <!-- Favicons -->
@@ -169,7 +149,7 @@ if (!isset($_SESSION['usuario_id'])) {
                             </li>
                             <?php } ?>
                             <li class="nav-item mb-3">
-                                <a class="nav-link text-white active" href="/admin/directorio.php">
+                                <a class="nav-link text-white active" aria-current="page" href="/admin/directorio.php">
                                     <i class="bi bi-people me-2"></i> Directorio
                                 </a>
                             </li>
@@ -187,7 +167,30 @@ if (!isset($_SESSION['usuario_id'])) {
                         <!-- Aquí va el contenido principal de la página -->
                         <h1 class="h3 mb-4">Panel de Administración</h1>
                         <div id="contenido-pagina">
-                            <!-- Contenido dinámico aquí -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+<div class="table-responsive">
+    <table id="tabla-usuarios" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Puesto</th>
+                <th>Empresa</th>
+                <th>Ciudad</th>
+                <th>Estado</th>
+                <th>País</th>
+                <th>Aprobado</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+
                         </div>
                     </div>
                 </main>
@@ -276,6 +279,62 @@ if (!isset($_SESSION['usuario_id'])) {
 <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
 <!-- Main JS File -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function() {
+    function cargarUsuarios() {
+        $.get('/api/usuarios.php', function(usuarios) {
+            const tbody = $('#tabla-usuarios tbody');
+            tbody.empty();
+            usuarios.forEach(function(u) {
+                // Filtrar administradores
+                if (u.rol && u.rol === 'admin') return;
+                let aprobado = u.aprobado == 1 ? 'Sí' : 'No';
+                let accion = '';
+                if (u.aprobado == 0) {
+                    accion = `<button class="btn btn-success btn-sm aprobar-btn" data-id="${u.id}">Aprobar</button>`;
+                }
+                tbody.append(`
+                    <tr>
+                        <td>${u.nombre}</td>
+                        <td>${u.email}</td>
+                        <td>${u.telefono || ''}</td>
+                        <td>${u.puesto || ''}</td>
+                        <td>${u.empresa || ''}</td>
+                        <td>${u.ciudad || ''}</td>
+                        <td>${u.estado || ''}</td>
+                        <td>${u.pais || ''}</td>
+                        <td>${aprobado}</td>
+                        <td>${accion}</td>
+                    </tr>
+                `);
+            });
+            $('#tabla-usuarios').DataTable();
+        });
+    }
+
+    cargarUsuarios();
+
+    // Aprobar usuario
+    $(document).on('click', '.aprobar-btn', function() {
+        const id = $(this).data('id');
+        $.ajax({
+            url: '/api/usuarios.php?aprobar=1',
+            type: 'PUT',
+            data: JSON.stringify({id: id}),
+            contentType: 'application/json',
+            success: function(resp) {
+                alert('Usuario aprobado');
+                cargarUsuarios();
+            },
+            error: function() {
+                alert('Error al aprobar usuario');
+            }
+        });
+    });
+});
+</script>
 <script src="/assets/js/main.js"></script>
 </body>
 
