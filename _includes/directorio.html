@@ -59,7 +59,7 @@
 
             <!-- Formulario -->
             <div class="col-md-8">
-                <form action="forms/contact.php" method="post" class="php-email-form" enctype="multipart/form-data">
+                <form id="registro-directorio" class="php-email-form" enctype="multipart/form-data" autocomplete="off">
                     <div class="row gy-3">
                         <div class="col-md-6">
                             <label class="form-label visually-hidden" for="nombre">Nombre</label>
@@ -123,7 +123,7 @@
                         <div class="col-12 text-center">
                             <div class="loading" style="display:none;">Cargando</div>
                             <div class="error-message"></div>
-                            <div class="sent-message" style="display:none;">¡Tu perfil ha sido guardado. Gracias!</div>
+                            <div class="sent-message" style="display:none;">¡Tu perfil ha sido guardado! Un administrador revisará tus datos antes de aparecer en el directorio.</div>
                             <button type="submit" class="btn btn-primary btn-lg mt-2">Guardar en Directorio</button>
                         </div>
                     </div>
@@ -176,6 +176,77 @@
                 if (val) preview.src = val;
             });
         })();
+
+        // Envío del formulario vía fetch a /api/usuarios.php
+        document.getElementById('registro-directorio').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const loading = document.querySelector('.loading');
+            const errorMsg = document.querySelector('.error-message');
+            const sentMsg = document.querySelector('.sent-message');
+            loading.style.display = 'block';
+            errorMsg.style.display = 'none';
+            sentMsg.style.display = 'none';
+
+            // Recopilar datos
+            const form = e.target;
+            const data = {
+                nombre: form.nombre.value.trim(),
+                email: form.email.value.trim(),
+                telefono: form.telefono.value.trim(),
+                puesto: form.puesto.value.trim(),
+                empresa: form.empresa.value.trim(),
+                ciudad: form.ciudad.value.trim(),
+                estado: form.estado.value.trim(),
+                pais: form.pais.value.trim(),
+                bio: form.bio.value.trim(),
+                imagen: form.imagen.value.trim(),
+                password: form.email.value.trim() // Usar email como password temporal, puedes cambiar esto
+            };
+
+            // Validación frontend
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const telefonoRegex = /^[0-9\-\+\s]{7,20}$/;
+            if (!data.nombre || !data.email || !data.telefono || !data.puesto || !data.empresa || !data.ciudad || !data.estado || !data.pais) {
+                loading.style.display = 'none';
+                errorMsg.textContent = 'Todos los campos obligatorios deben estar completos.';
+                errorMsg.style.display = 'block';
+                return;
+            }
+            if (!emailRegex.test(data.email)) {
+                loading.style.display = 'none';
+                errorMsg.textContent = 'El email no es válido.';
+                errorMsg.style.display = 'block';
+                return;
+            }
+            if (!telefonoRegex.test(data.telefono)) {
+                loading.style.display = 'none';
+                errorMsg.textContent = 'El teléfono no es válido.';
+                errorMsg.style.display = 'block';
+                return;
+            }
+            // Puedes agregar más validaciones aquí (longitud, caracteres, etc.)
+
+            try {
+                const response = await fetch('/api/usuarios.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                loading.style.display = 'none';
+                if (result.success) {
+                    sentMsg.style.display = 'block';
+                    form.reset();
+                } else {
+                    errorMsg.textContent = result.error || 'Error al registrar.';
+                    errorMsg.style.display = 'block';
+                }
+            } catch (err) {
+                loading.style.display = 'none';
+                errorMsg.textContent = 'Error de red o del servidor.';
+                errorMsg.style.display = 'block';
+            }
+        });
     </script>
 </section>
 

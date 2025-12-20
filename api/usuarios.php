@@ -18,11 +18,26 @@ if ($method === 'GET') {
 
 // REGISTRAR nuevo miembro (aprobado=0 por defecto)
 if ($method === 'POST') {
-    if (!isset($data['nombre'], $data['email'], $data['password'])) {
+    // Validación backend
+    $required = ['nombre','email','password','telefono','puesto','empresa','ciudad','estado','pais'];
+    foreach ($required as $field) {
+        if (empty($data[$field])) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Faltan campos obligatorios: ' . $field]);
+            exit;
+        }
+    }
+    if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
         http_response_code(400);
-        echo json_encode(['error' => 'Faltan campos obligatorios']);
+        echo json_encode(['error' => 'El email no es válido.']);
         exit;
     }
+    if (!preg_match('/^[0-9\-\+\s]{7,20}$/', $data['telefono'])) {
+        http_response_code(400);
+        echo json_encode(['error' => 'El teléfono no es válido.']);
+        exit;
+    }
+    // Puedes agregar más validaciones aquí (longitud, caracteres, etc.)
     $password_hash = password_hash($data['password'], PASSWORD_BCRYPT);
     $sql = "INSERT INTO Usuarios (nombre, email, password_hash, telefono, puesto, empresa, ciudad, estado, pais, imagen, bio, rol, aprobado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'directorio', 0)";
     $stmt = $pdo->prepare($sql);
