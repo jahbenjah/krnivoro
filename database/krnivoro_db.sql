@@ -1,3 +1,17 @@
+--
+-- Estructura de tabla para la tabla `BlogArticulos`
+--
+
+CREATE TABLE `BlogArticulos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `autor` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `seccion` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `contenido` text COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_publicacion` datetime DEFAULT CURRENT_TIMESTAMP,
+  `actualizado_en` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
