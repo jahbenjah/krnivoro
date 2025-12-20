@@ -9,9 +9,9 @@ $pdo = new PDO('mysql:host=localhost;dbname=krnivoro_db;charset=utf8mb4', 'krniv
 $method = $_SERVER['REQUEST_METHOD'];
 $data = json_decode(file_get_contents('php://input'), true);
 
-// LISTAR miembros aprobados
+// LISTAR miembros del directorio
 if ($method === 'GET') {
-    $stmt = $pdo->query("SELECT id, nombre, email, telefono, puesto, empresa, ciudad, estado, pais, imagen, bio FROM Usuarios WHERE aprobado = 1");
+    $stmt = $pdo->query("SELECT id, nombre, email, telefono, puesto, empresa, ciudad, estado, pais, imagen, bio, rol, aprobado FROM Usuarios");
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
     exit;
 }

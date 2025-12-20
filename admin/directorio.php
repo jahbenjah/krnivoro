@@ -127,7 +127,7 @@ if (!isset($_SESSION['usuario_id'])) {
         <div class="container-fluid">
             <div class="row">
                 <!-- Sidebar -->
-                <nav id="sidebar" class="col-md-2 d-none d-md-block bg-dark sidebar vh-100" style="min-height:100vh;position:fixed;left:0;top:0;z-index:1000;">
+                <nav id="sidebar" class="col-md-2 bg-dark sidebar vh-100 d-block" style="min-height:100vh;position:fixed;left:0;top:0;z-index:1000;width:220px;">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column text-white">
                             <?php
@@ -162,7 +162,7 @@ if (!isset($_SESSION['usuario_id'])) {
                     </div>
                 </nav>
                 <!-- Main content -->
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 offset-md-2" id="main-content" style="min-height:100vh;">
+                <main class="col-md-10 ms-auto px-md-4" id="main-content" style="min-height:100vh;margin-left:220px;">
                     <div class="pt-4">
                         <!-- Aquí va el contenido principal de la página -->
                         <h1 class="h3 mb-4">Panel de Administración</h1>

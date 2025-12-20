@@ -43,18 +43,16 @@ CREATE TABLE `Usuarios` (
 -- Volcado de datos para la tabla `Usuarios`
 --
 
-INSERT INTO `Usuarios` (`id`, `nombre`, `email`, `password_hash`, `telefono`, `rol`, `creado_en`, `puesto`, `empresa`, `ciudad`, `estado`, `pais`, `imagen`, `bio`) VALUES
-(2, 'Benjamin Camacho', 'benjamin.camcho@rosaritocentro.com', '$2y$10$yD3xctau9lRuXCbggWzAKe9bgbNkdtp0rtkyqHkmWUbufPjnCyXsK', '5551594567', 'admin', '2025-06-16 06:46:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `Usuarios` (`id`, `nombre`, `email`, `password_hash`, `telefono`, `rol`, `creado_en`, `puesto`, `empresa`, `ciudad`, `estado`, `pais`, `imagen`, `bio`, `aprobado`) VALUES
+(2, 'Benjamin Camacho', 'benjamin.camcho@rosaritocentro.com', '$2y$10$yD3xctau9lRuXCbggWzAKe9bgbNkdtp0rtkyqHkmWUbufPjnCyXsK', '5551594567', 'admin', '2025-06-16 06:46:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(3, 'Ana Sofía Méndez', 'ana.sofia@grupoaltamar.com', '$2y$10$e0NR1Qw1Qw1Qw1Qw1Qw1Qe0NR1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw', '6611234567', 'directorio', '2025-12-01 10:00:00', 'Directora de Relaciones', 'Grupo Altamar', 'Ensenada', 'B.C.', 'México', NULL, 'Especialista en relaciones públicas y networking.', 1),
+(4, 'Luis Alberto Castañeda', 'luis.casta@borderlink.com', '$2y$10$e0NR2Qw2Qw2Qw2Qw2Qw1Qe0NR2Qw2Qw2Qw2Qw2Qw2Qw2Qw2Qw', '6649876543', 'directorio', '2025-12-02 11:00:00', 'Socio Fundador', 'Borderlink Capital Partners', 'Tijuana', 'B.C.', 'México', NULL, 'Experto en inversiones y capital privado.', 0),
+(5, 'Elena Ruiz', 'elena.ruiz@innovatrade.com', '$2y$10$e0NR3Qw3Qw3Qw3Qw3Qw1Qe0NR3Qw3Qw3Qw3Qw3Qw3Qw3Qw3Qw', '6865554321', 'directorio', '2025-12-03 12:00:00', 'Directora General', 'Innova Trade Group', 'Mexicali', 'B.C.', 'México', NULL, 'Líder en comercio exterior y logística.', 1),
+(6, 'Carlos Pérez', 'carlos.perez@consulting.com', '$2y$10$e0NR4Qw4Qw4Qw4Qw4Qw1Qe0NR4Qw4Qw4Qw4Qw4Qw4Qw4Qw4Qw', '6641237890', 'directorio', '2025-12-04 13:00:00', 'Consultor Senior', 'Consulting Group', 'Tijuana', 'B.C.', 'México', NULL, 'Consultor en estrategia empresarial.', 0);
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `directorio`
---
-ALTER TABLE `directorio`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `Usuarios`
@@ -68,18 +66,9 @@ ALTER TABLE `Usuarios`
 --
 
 --
--- AUTO_INCREMENT de la tabla `directorio`
---
-ALTER TABLE `directorio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `Usuarios`
 --
 ALTER TABLE `Usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
