@@ -143,10 +143,56 @@ if (!isset($_SESSION['usuario_id'])) {
 
     </div>
 </header>
-    <main class="main">
-    <h1>Directorio de Miembros</h1>   
 
-    </main>
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <nav id="sidebar" class="col-md-2 d-none d-md-block bg-dark sidebar vh-100" style="min-height:100vh;position:fixed;left:0;top:0;z-index:1000;">
+                    <div class="position-sticky pt-3">
+                        <ul class="nav flex-column text-white">
+                            <?php
+                            // Obtener el rol del usuario
+                            $rol = null;
+                            if (isset($_SESSION['usuario_id'])) {
+                                    $pdo = new PDO('mysql:host=localhost;dbname=krnivoro_db;charset=utf8mb4', 'krnivoro_db', 'Krnivoro.com1');
+                                    $stmt = $pdo->prepare("SELECT rol FROM Usuarios WHERE id = ? LIMIT 1");
+                                    $stmt->execute([$_SESSION['usuario_id']]);
+                                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                                    if ($row) $rol = $row['rol'];
+                            }
+                            if ($rol === 'admin') {
+                            ?>
+                            <li class="nav-item mb-3">
+                                <a class="nav-link text-white" href="/admin/blog.php">
+                                    <i class="bi bi-journal-text me-2"></i> Blog
+                                </a>
+                            </li>
+                            <?php } ?>
+                            <li class="nav-item mb-3">
+                                <a class="nav-link text-white active" href="/admin/directorio.php">
+                                    <i class="bi bi-people me-2"></i> Directorio
+                                </a>
+                            </li>
+                            <li class="nav-item mt-5">
+                                <form action="/admin/logout.php" method="post">
+                                    <button type="submit" class="btn btn-danger w-100"><i class="bi bi-box-arrow-right me-2"></i> Cerrar Sesión</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- Main content -->
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 offset-md-2" id="main-content" style="min-height:100vh;">
+                    <div class="pt-4">
+                        <!-- Aquí va el contenido principal de la página -->
+                        <h1 class="h3 mb-4">Panel de Administración</h1>
+                        <div id="contenido-pagina">
+                            <!-- Contenido dinámico aquí -->
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
     
     <footer id="footer" class="footer dark-background">
     <div class="footer-top">

@@ -60,6 +60,7 @@ exclude:
   - inde.txt
   - servicios.txt
   - servicios.txt
+  - database/
 
 defaults:
   -
