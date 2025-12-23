@@ -1716,24 +1716,17 @@ section,
   transform: scale(1.05);
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
-.filtro-btn {
+.filter-btn {
   background-color: white;
   color: #444;
   border: 1px solid #ccc;
 }
 
 
-.filtro-btn:hover {
-  background-color: var(--accent-color);
+.filter-btn:hover {
+  background-color: var(--accent-color) !important;
   color: #fff;
 }
-
-
-
-
-
-
-
 
 /*--------------------------------------------------------------
 # Portfolio Details Section
