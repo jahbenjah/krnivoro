@@ -137,6 +137,14 @@ CREATE TABLE BlogComentarios (
   FOREIGN KEY (articulo_id) REFERENCES BlogArticulos(id) ON DELETE CASCADE
 );
 
+CREATE TABLE UsuarioImagenes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT NOT NULL,
+  imagen_base64 LONGTEXT COLLATE utf8_unicode_ci NOT NULL,
+  fecha_subida TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (usuario_id) REFERENCES Usuarios(id) ON DELETE CASCADE
+);
+
 -- Categorías (si no existen)
 INSERT INTO BlogCategorias (nombre, slug) VALUES ('Mindset & Liderazgo', 'mindset-liderazgo');
 INSERT INTO BlogCategorias (nombre, slug) VALUES ('Negocios & Estrategia', 'negocios-estrategia');
