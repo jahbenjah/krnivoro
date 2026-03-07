@@ -1,9 +1,10 @@
 <?php
 session_start();
+require_once __DIR__.'/../config.php';
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Conexión a la base de datos
-    $pdo = new PDO('mysql:host=localhost;dbname=krnivoro_db;charset=utf8mb4', 'krnivoro_db', 'Krnivoro.com1');
+    $pdo = getPDO();
     $stmt = $pdo->prepare("SELECT id, password_hash FROM Usuarios WHERE email = ?");
     $stmt->execute([$_POST['email']]);
     $usuario = $stmt->fetch();

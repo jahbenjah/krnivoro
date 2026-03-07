@@ -4,7 +4,8 @@ if (!isset($_SESSION['usuario_id'])) {
     header('Location: /admin/login.php');
     exit;
 }
-$pdo = new PDO('mysql:host=localhost;dbname=krnivoro_db;charset=utf8mb4', 'krnivoro_db', 'Krnivoro.com1');
+require_once __DIR__.'/../config.php';
+$pdo = getPDO();
 $categorias = $pdo->query("SELECT id, nombre FROM BlogCategorias")->fetchAll();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare("INSERT INTO BlogArticulos (titulo, slug, autor, contenido, resumen, fecha_publicacion, estado, seo_title, seo_description, categoria_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");

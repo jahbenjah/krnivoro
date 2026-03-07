@@ -4,7 +4,8 @@ if (!isset($_SESSION['usuario_id'])) {
     header('Location: /admin/login.php');
     exit;
 }
-$pdo = new PDO('mysql:host=localhost;dbname=krnivoro_db;charset=utf8mb4', 'krnivoro_db', 'Krnivoro.com1');
+require_once __DIR__.'/../config.php';
+$pdo = getPDO();
 $stmt = $pdo->query("SELECT a.id, a.titulo, a.slug, a.fecha_publicacion, c.nombre AS categoria FROM BlogArticulos a LEFT JOIN BlogCategorias c ON a.categoria_id = c.id ORDER BY a.fecha_publicacion DESC");
 $articulos = $stmt->fetchAll();
 ?>

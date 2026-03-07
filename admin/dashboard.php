@@ -4,8 +4,9 @@ if (!isset($_SESSION['usuario_id'])) {
     header('Location: /admin/login.php');
     exit;
 }
+require_once __DIR__.'/../config.php';
+$pdo = getPDO();
 // Conexión a la base de datos
-$pdo = new PDO('mysql:host=localhost;dbname=krnivoro_db;charset=utf8mb4', 'krnivoro_db', 'Krnivoro.com1');
 $stmt = $pdo->prepare("SELECT rol, nombre, aprobado FROM Usuarios WHERE id = ?");
 $stmt->execute([$_SESSION['usuario_id']]);
 $usuario = $stmt->fetch();
