@@ -111,6 +111,98 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
+-- Categorías (si no existen)
+INSERT INTO BlogCategorias (nombre, slug) VALUES ('Mindset & Liderazgo', 'mindset-liderazgo');
+INSERT INTO BlogCategorias (nombre, slug) VALUES ('Negocios & Estrategia', 'negocios-estrategia');
+
+-- Artículo 1: El Hombre de Valor
+INSERT INTO BlogArticulos (
+  titulo, slug, autor, contenido, resumen, fecha_publicacion, estado, seo_title, seo_description, categoria_id
+) VALUES (
+  'El Hombre de Valor La filosofía KRNIVORO hecha historia',
+  'el-hombre-de-valor',
+  'Equipo KRNIVORO',
+  '“El Hombre de Valor” — la filosofía KRNIVORO hecha historia.\n\nNO TODOS LOS HOMBRES SON IGUALES\nAlgunos se alimentan de excusas. Otros… de propósito.\nEl Hombre KRNIVORO no busca aprobación ni aplausos; busca precisión, energía y resultados.\nNo come por ansiedad, ni trabaja por ego. Se nutre para rendir, piensa para construir y se entrena para liderar.\nFUERZA ANTES QUE FORMA\nEn un mundo saturado de distracciones, el cuerpo se convierte en el primer reflejo del carácter.\nPor eso en KRNIVORO, la salud no es estética: es estrategia.\nLa dieta carnívora, los sueros IV, la medicina regenerativa, los entrenamientos funcionales y la suplementación inteligente no son moda — son el sistema operativo del líder moderno.\nCada corte de carne grass-fed, cada hora en el gimnasio, cada decisión en la mesa o en la junta… es parte de un solo objetivo: mantenerte indestructible.',
+  'La filosofía KRNIVORO aplicada al liderazgo y salud.',
+  '2025-10-17',
+  'publicado',
+  'El Hombre de Valor | KRNIVORO',
+  'Descubre la filosofía KRNIVORO para líderes: salud, mindset y fuerza.',
+  (SELECT id FROM BlogCategorias WHERE slug='mindset-liderazgo')
+);
+
+-- Artículo 2: KRNIVORO Business Week
+INSERT INTO BlogArticulos (
+  titulo, slug, autor, contenido, resumen, fecha_publicacion, estado, seo_title, seo_description, categoria_id
+) VALUES (
+  'KRNIVORO Business Week Lo más importante que debes saber',
+  'krnivoro-business-week',
+  'Equipo KRNIVORO',
+  'KRNIVORO Business Week: Lo más importante que debes saber\nPanorama General\nEsta semana destaca por movimientos estratégicos en infraestructura, comercio exterior y reformas arancelarias que apuntan a ajustar el rumbo empresarial del país. Aquí tienes las piezas clave:\nMéxico encara retos de inversión en infraestructura\nA pesar de un aparente crecimiento en planes presupuestarios 2026, expertos advierten que el verdadero impulso está estancado. La inversión pública real muestra señales de fatiga, mientras que la iniciativa privada exige certidumbre y reglas claras.\nAranceles alineados con tendencias globales\nLa Presidencia revisa una reforma arancelaria ambiciosa para 2026 que busca adaptarse al nuevo mapa comercial mundial. Se espera que México redefina su estrategia con EE.UU., China y bloque regionales.\nFormación para la industria 4.0\nFrente a la ola de nearshoring, empiezan a surgir nuevas alianzas entre empresas y universidades para capacitar talento en competencias tecnológicas avanzadas. La meta: que México sea un polo de manufactura especializada.\nRecomendación estratégica\nMonitorea las reformas arancelarias: quienes ajusten rápido ganarán posición.\nInvolúcrate en programas de capacitación 4.0: tu ventaja competitiva estará ahí.\nEvalúa inversiones en activos tangibles (infraestructura privada) frente a incertidumbre pública.',
+  'Resumen de la semana de negocios y estrategia en KRNIVORO.',
+  '2025-10-17',
+  'publicado',
+  'KRNIVORO Business Week | KRNIVORO',
+  'Lo más importante de la semana en negocios, estrategia y formación.',
+  (SELECT id FROM BlogCategorias WHERE slug='negocios-estrategia')
+);
+
+
+-- --------------------------------------------------------
+-- Modelo de base de datos para blogs optimizado para SEO
+
+CREATE TABLE BlogCategorias (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  slug VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE BlogEtiquetas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  slug VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE BlogArticulos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  titulo VARCHAR(255) NOT NULL,
+  slug VARCHAR(255) NOT NULL UNIQUE,
+  autor VARCHAR(100),
+  contenido LONGTEXT NOT NULL,
+  resumen TEXT,
+  imagen_destacada VARCHAR(255),
+  fecha_publicacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+  actualizado_en TIMESTAMP NULL DEFAULT NULL,
+  estado ENUM('publicado','borrador') DEFAULT 'borrador',
+  seo_keywords VARCHAR(255),
+  seo_title VARCHAR(255),
+  seo_description VARCHAR(255),
+  canonical_url VARCHAR(255),
+  robots_meta VARCHAR(50),
+  categoria_id INT,
+  FOREIGN KEY (categoria_id) REFERENCES BlogCategorias(id)
+);
+
+CREATE TABLE BlogArticuloEtiquetas (
+  articulo_id INT NOT NULL,
+  etiqueta_id INT NOT NULL,
+  PRIMARY KEY (articulo_id, etiqueta_id),
+  FOREIGN KEY (articulo_id) REFERENCES BlogArticulos(id) ON DELETE CASCADE,
+  FOREIGN KEY (etiqueta_id) REFERENCES BlogEtiquetas(id) ON DELETE CASCADE
+);
+
+CREATE TABLE BlogComentarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  articulo_id INT NOT NULL,
+  nombre VARCHAR(100),
+  email VARCHAR(100),
+  comentario TEXT NOT NULL,
+  fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+  aprobado TINYINT(1) DEFAULT 0,
+  FOREIGN KEY (articulo_id) REFERENCES BlogArticulos(id) ON DELETE CASCADE
+);
+
+
 -- --------------------------------------------------------
 -- Estructura de tabla para la tabla `UsuarioImagenes`
 --
