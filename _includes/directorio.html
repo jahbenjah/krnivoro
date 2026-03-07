@@ -167,6 +167,8 @@
                 const reader = new FileReader();
                 reader.onload = function (ev) {
                     preview.src = ev.target.result;
+                    // Guardar base64 en variable global
+                    window.imagenBase64 = ev.target.result.split(',')[1]; // solo datos base64
                 };
                 reader.readAsDataURL(file);
             });
@@ -200,7 +202,8 @@
                 pais: form.pais.value.trim(),
                 bio: form.bio.value.trim(),
                 imagen: form.imagen.value.trim(),
-                password: form.email.value.trim() // Usar email como password temporal, puedes cambiar esto
+                password: form.email.value.trim(), // Usar email como password temporal
+                imagen_base64: window.imagenBase64 || null // Nuevo campo para base64
             };
 
             // Validación frontend

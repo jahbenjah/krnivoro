@@ -55,7 +55,13 @@ if ($method === 'POST') {
             $data['imagen'] ?? null,
             $data['bio'] ?? null
         ]);
-        echo json_encode(['success' => true, 'id' => $pdo->lastInsertId()]);
+        $usuario_id = $pdo->lastInsertId();
+        // Guardar imagen base64 si existe
+        if (!empty($data['imagen_base64'])) {
+            $stmtImg = $pdo->prepare("INSERT INTO UsuarioImagenes (usuario_id, imagen_base64) VALUES (?, ?)");
+            $stmtImg->execute([$usuario_id, $data['imagen_base64']]);
+        }
+        echo json_encode(['success' => true, 'id' => $usuario_id]);
     } catch (PDOException $e) {
         http_response_code(400);
         echo json_encode(['error' => 'No se pudo registrar el usuario.']);

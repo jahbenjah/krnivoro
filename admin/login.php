@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = $stmt->fetch();
     if ($usuario && password_verify($_POST['password'], $usuario['password_hash'])) {
         $_SESSION['usuario_id'] = $usuario['id'];
-        header('Location: /admin/directorio.php');
+        header('Location: /admin/dashboard.php');
         exit;
     } else {
         $error = 'Correo o contraseña incorrectos';
