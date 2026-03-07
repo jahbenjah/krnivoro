@@ -1,84 +1,42 @@
 <?php
-// Al inicio del archivo que muestra la lista de propiedades
 session_start();
-
 if (!isset($_SESSION['usuario_id'])) {
-    header('Location: /admin/login.php');
-    exit;
+        header('Location: /admin/login.php');
+        exit;
 }
-?>
+require_once __DIR__.'/../config.php';
+require_once __DIR__.'/layout.php';
 
-<!DOCTYPE html>
-<html lang="es-mx">
-
-<head>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Administrador del Directorio | Krnivoro</title>
-<meta name="description" content="Panel de administración para aprobar y gestionar miembros del directorio Krnivoro.">
-<meta name="keywords" content="admin, directorio, gestión, Krnivoro, miembros, aprobación, panel">
-<meta name="author" content="Krnivoro Admin">
-<meta name="robots" content="noindex, nofollow">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:title" content="Administrador del Directorio | Krnivoro">
-<meta property="og:description" content="Panel de administración para aprobar y gestionar miembros del directorio Krnivoro.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://krnivoro.com/admin/directorio.php">
-<meta property="og:image" content="https://krnivoro.com/assets/img/krnivoro/favicon/web-app-manifest-512x512.png">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Administrador del Directorio | Krnivoro">
-<meta name="twitter:description" content="Panel de administración para aprobar y gestionar miembros del directorio Krnivoro.">
-<meta name="twitter:image" content="https://krnivoro.com/assets/img/krnivoro/favicon/web-app-manifest-512x512.png">
-
-<!-- Favicons -->
-<link rel="icon" type="image/png" href="/assets/img/krnivoro/favicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/assets/img/krnivoro/favicon/favicon.svg" />
-<link rel="shortcut icon" href="/assets/img/krnivoro/favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/krnivoro/favicon/apple-touch-icon.png" />
-<link rel="manifest" href="/assets/img/krnivoro/favicon/site.webmanifest" />
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect">
-<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-<link
-  href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-  rel="stylesheet">
-<!-- Vendor CSS Files -->
-<link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-<link href="/assets/vendor/aos/aos.css" rel="stylesheet">
-<link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-<link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"><!-- Main CSS File -->
-<link href="/assets/css/main.css" rel="stylesheet">
-
-<script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Krnivoro",
-  "url": "https://krnivoro.com",
-  "logo": "https://krnivoro.com/assets/img/knivoro.png",
-  "contactPoint": [
-    {
-      "@type": "ContactPoint",
-      "telephone": "+52 661 172 4066",
-      "contactType": "customer service",
-      "areaServed": "MX",
-      "availableLanguage": ["Spanish"]
-    }
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "22762 Rancho Oasis",
-    "addressLocality": "Ensenada",
-    "addressRegion": "B.C.",
-    "addressCountry": "MX"
-  },
-  "email": ["info@krnivoro.com", "contacto@krnivoro.com"]
+$pdo = getPDO();
+$rol = null;
+if (isset($_SESSION['usuario_id'])) {
+        $stmt = $pdo->prepare("SELECT rol FROM Usuarios WHERE id = ? LIMIT 1");
+        $stmt->execute([$_SESSION['usuario_id']]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row) $rol = $row['rol'];
 }
+
+$sidebar = '<ul class="nav flex-column text-white">';
+if ($rol === 'admin') {
+        $sidebar .= '<li class="nav-item mb-3"><a class="nav-link text-white" href="/admin/blog.php"><i class="bi bi-journal-text me-2"></i> Blog</a></li>';
+}
+$sidebar .= '<li class="nav-item mb-3"><a class="nav-link text-white active" aria-current="page" href="/admin/directorio.php"><i class="bi bi-people me-2"></i> Directorio</a></li>';
+$sidebar .= '<li class="nav-item mt-5"><form action="/admin/logout.php" method="post"><button type="submit" class="btn btn-danger w-100"><i class="bi bi-box-arrow-right me-2"></i> Cerrar Sesión</button></form></li>';
+$sidebar .= '</ul>';
+
+$mainContent = '<h1 class="h3 mb-4">Panel de Administración</h1>';
+$mainContent .= '<div id="contenido-pagina">';
+$mainContent .= '<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">';
+$mainContent .= '<div class="table-responsive">';
+$mainContent .= '<table id="tabla-usuarios" class="table table-striped table-bordered">';
+$mainContent .= '<thead><tr><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Puesto</th><th>Empresa</th><th>Ciudad</th><th>Estado</th><th>País</th><th>Aprobado</th><th>Acción</th></tr></thead><tbody></tbody></table>';
+$mainContent .= '</div>';
+$mainContent .= '</div>';
+$mainContent .= '<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>';
+$mainContent .= '<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>';
+$mainContent .= '<script>$(document).ready(function() {function cargarUsuarios() {$.get("/api/usuarios.php", function(usuarios) {const tbody = $("#tabla-usuarios tbody");tbody.empty();usuarios.forEach(function(u) {if (u.rol && u.rol === "admin") return;let aprobado = u.aprobado == 1 ? "Sí" : "No";let accion = "";if (u.aprobado == 0) {accion = `<button class=\"btn btn-success btn-sm aprobar-btn\" data-id=\"${u.id}\">Aprobar</button>`;}tbody.append(`<tr><td>${u.nombre}</td><td>${u.email}</td><td>${u.telefono || ""}</td><td>${u.puesto || ""}</td><td>${u.empresa || ""}</td><td>${u.ciudad || ""}</td><td>${u.estado || ""}</td><td>${u.pais || ""}</td><td>${aprobado}</td><td>${accion}</td></tr>`);});$("#tabla-usuarios").DataTable();});}cargarUsuarios();$(document).on("click", ".aprobar-btn", function() {const id = $(this).data("id");$.ajax({url: "/api/usuarios.php?aprobar=1",type: "PUT",data: JSON.stringify({id: id}),contentType: "application/json",success: function(resp) {alert("Usuario aprobado");cargarUsuarios();},error: function() {alert("Error al aprobar usuario");}});});});</script>';
+
+renderLayout('Administrador del Directorio | Krnivoro', '<nav class="col-md-2 bg-dark sidebar vh-100 d-block" style="min-height:100vh;position:fixed;left:0;top:0;z-index:1000;width:220px;"><div class="position-sticky pt-3">'.$sidebar.'</div></nav><main class="col-md-10 ms-auto px-md-4" id="main-content" style="min-height:100vh;margin-left:220px;"><div class="pt-4">'.$mainContent.'</div></main>');
 </script></head>
 
 <body class="index-page"><header id="header" class="header d-flex align-items-center fixed-top">

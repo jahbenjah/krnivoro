@@ -5,80 +5,66 @@ if (!isset($_SESSION['usuario_id'])) {
     exit;
 }
 require_once __DIR__.'/../config.php';
+require_once __DIR__.'/layout.php';
 $pdo = getPDO();
-// Conexión a la base de datos
 $stmt = $pdo->prepare("SELECT rol, nombre, aprobado FROM Usuarios WHERE id = ?");
 $stmt->execute([$_SESSION['usuario_id']]);
 $usuario = $stmt->fetch();
 $rol = $usuario['rol'] ?? 'directorio';
 $nombre = $usuario['nombre'] ?? '';
 $aprobado = $usuario['aprobado'] ?? 0;
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard KRNIVORO</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <style>
-        body { background: #f8f9fa; }
-        .sidebar { min-width: 200px; background: #343a40; color: #fff; height: 100vh; position: fixed; }
-        .sidebar a { color: #fff; display: block; padding: 1rem; text-decoration: none; }
-        .sidebar a.active, .sidebar a:hover { background: #495057; }
-        .main { margin-left: 200px; padding: 2rem; }
-    </style>
-</head>
-<body>
-    <div class="sidebar">
-        <h4 class="p-3">KRNIVORO</h4>
-        <a href="/admin/directorio.php">Directorio</a>
-        <?php if ($rol === 'admin'): ?>
-            <a href="/admin/blog.php">Blog</a>
-            <h4>Miembros pendientes de aprobación</h4>
-            <div id="pendientes-list" class="row"></div>
-            <script>
-            async function cargarPendientes() {
-                const res = await fetch('/api/usuarios.php');
-                const usuarios = await res.json();
-                const pendientes = usuarios.filter(u => u.aprobado == 0);
-                const cont = document.getElementById('pendientes-list');
-                cont.innerHTML = pendientes.map(u => `
-                    <div class='col-md-4 mb-3'>
-                        <div class='card border-warning'>
-                            <div class='card-body'>
-                                <h5 class='card-title text-warning'>${u.nombre}</h5>
-                                <p class='card-text'>
-                                    <strong>${u.puesto || ''}</strong><br>
-                                    ${u.empresa || ''}<br>
-                                    ${u.ciudad || ''}, ${u.estado || ''}, ${u.pais || ''}
-                                </p>
-                                <a href='mailto:${u.email}' class='btn btn-success'>Contactar</a>
-                                <button class='btn btn-primary' onclick='aprobarUsuario(${u.id})'>Aprobar</button>
-                            </div>
-                        </div>
+
+$dashboardContent = '';
+$dashboardContent .= '<h2>Bienvenido, '.htmlspecialchars($nombre).'</h2>';
+$dashboardContent .= '<p>Panel de control de KRNIVORO.</p>';
+if ($rol === 'admin') {
+    $dashboardContent .= '<h4>Miembros pendientes de aprobación</h4>';
+    $dashboardContent .= '<div id="pendientes-list" class="row"></div>';
+    $dashboardContent .= '<script>
+    async function cargarPendientes() {
+        const res = await fetch("/api/usuarios.php");
+        const usuarios = await res.json();
+        const pendientes = usuarios.filter(u => u.aprobado == 0);
+        const cont = document.getElementById("pendientes-list");
+        cont.innerHTML = pendientes.map(u => `
+            <div class="col-md-4 mb-3">
+                <div class="card border-warning">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning">${u.nombre}</h5>
+                        <p class="card-text">
+                            <strong>${u.puesto || ""}</strong><br>
+                            ${u.empresa || ""}<br>
+                            ${u.ciudad || ""}, ${u.estado || ""}, ${u.pais || ""}
+                        </p>
+                        <a href="mailto:${u.email}" class="btn btn-success">Contactar</a>
+                        <button class="btn btn-primary" onclick="aprobarUsuario(${u.id})">Aprobar</button>
                     </div>
-                `).join('');
-            }
-            async function aprobarUsuario(id) {
-                const res = await fetch('/api/usuarios.php?aprobar=1', {
-                    method: 'PUT',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({id})
-                });
-                const result = await res.json();
-                if (result.success) {
-                    cargarPendientes();
-                    alert('Miembro aprobado correctamente.');
-                }
-            }
+                </div>
+            </div>
+        `).join("");
+    }
+    async function aprobarUsuario(id) {
+        const res = await fetch("/api/usuarios.php?aprobar=1", {
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({id})
+        });
+        const result = await res.json();
+        if (result.success) {
             cargarPendientes();
-            </script>
-        <?php endif; ?>
+            alert("Miembro aprobado correctamente.");
+        }
+    }
+    cargarPendientes();
+    </script>';
+}
+renderLayout('Dashboard KRNIVORO', $dashboardContent);
         <a href="/admin/logout.php">Salir</a>
     </div>
     <div class="main">
         <h2>Bienvenido, <?php echo htmlspecialchars($nombre); ?>!</h2>
         <p>Panel de administración KRNIVORO.</p>
+        <a href="/admin/perfil.php" class="btn btn-outline-primary mb-3">Editar mi perfil</a>
         <hr>
         <?php if ($rol === 'directorio' && !$aprobado): ?>
             <div class="alert alert-warning">Tu aplicación está en revisión. El equipo de KRNIVORO está revisando tus datos. Pronto recibirás una notificación.</div>

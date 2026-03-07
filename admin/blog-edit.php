@@ -5,6 +5,7 @@ if (!isset($_SESSION['usuario_id'])) {
     exit;
 }
 require_once __DIR__.'/../config.php';
+require_once __DIR__.'/layout.php';
 $pdo = getPDO();
 $categorias = $pdo->query("SELECT id, nombre FROM BlogCategorias")->fetchAll();
 $id = $_GET['id'] ?? null;
@@ -30,81 +31,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: /admin/blog-list.php');
     exit;
 }
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Editar Blog</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <style>
-        body { background: #f8f9fa; }
-        .sidebar { min-width: 200px; background: #343a40; color: #fff; height: 100vh; position: fixed; }
-        .sidebar a { color: #fff; display: block; padding: 1rem; text-decoration: none; }
-        .sidebar a.active, .sidebar a:hover { background: #495057; }
-        .main { margin-left: 200px; padding: 2rem; }
-    </style>
-</head>
-<body>
-    <div class="sidebar">
-        <h4 class="p-3">KRNIVORO</h4>
-        <a href="/admin/dashboard.php">Dashboard</a>
-        <a href="/admin/blog-list.php" class="active">Blog</a>
-        <a href="/admin/directorio.php">Directorio</a>
-        <a href="/admin/logout.php">Salir</a>
-    </div>
-    <div class="main">
-        <h2>Editar artículo</h2>
-        <form method="post">
-            <div class="mb-3">
-                <label>Título</label>
-                <input type="text" name="titulo" class="form-control" value="<?php echo htmlspecialchars($articulo['titulo']); ?>" required>
-            </div>
-            <div class="mb-3">
-                <label>Slug (URL)</label>
-                <input type="text" name="slug" class="form-control" value="<?php echo htmlspecialchars($articulo['slug']); ?>" required>
-            </div>
-            <div class="mb-3">
-                <label>Autor</label>
-                <input type="text" name="autor" class="form-control" value="<?php echo htmlspecialchars($articulo['autor']); ?>" required>
-            </div>
-            <div class="mb-3">
-                <label>Contenido</label>
-                <textarea name="contenido" class="form-control" rows="8" required><?php echo htmlspecialchars($articulo['contenido']); ?></textarea>
-            </div>
-            <div class="mb-3">
-                <label>Resumen</label>
-                <textarea name="resumen" class="form-control" rows="2"><?php echo htmlspecialchars($articulo['resumen']); ?></textarea>
-            </div>
-            <div class="mb-3">
-                <label>Fecha de publicación</label>
-                <input type="date" name="fecha_publicacion" class="form-control" value="<?php echo htmlspecialchars($articulo['fecha_publicacion']); ?>" required>
-            </div>
-            <div class="mb-3">
-                <label>Estado</label>
-                <select name="estado" class="form-control">
-                    <option value="publicado" <?php if($articulo['estado']=='publicado') echo 'selected'; ?>>Publicado</option>
-                    <option value="borrador" <?php if($articulo['estado']=='borrador') echo 'selected'; ?>>Borrador</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label>SEO Title</label>
-                <input type="text" name="seo_title" class="form-control" value="<?php echo htmlspecialchars($articulo['seo_title']); ?>">
-            </div>
-            <div class="mb-3">
-                <label>SEO Description</label>
-                <input type="text" name="seo_description" class="form-control" value="<?php echo htmlspecialchars($articulo['seo_description']); ?>">
-            </div>
-            <div class="mb-3">
-                <label>Categoría</label>
-                <select name="categoria_id" class="form-control">
-                    <?php foreach ($categorias as $cat): ?>
-                        <option value="<?php echo $cat['id']; ?>" <?php if($articulo['categoria_id']==$cat['id']) echo 'selected'; ?>><?php echo htmlspecialchars($cat['nombre']); ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <button class="btn btn-primary" type="submit">Guardar cambios</button>
-        </form>
-    </div>
-</body>
-</html>
+
+$form = '<h2>Editar artículo</h2>';
+$form .= '<form method="post">';
+$form .= '<div class="mb-3"><label>Título</label><input type="text" name="titulo" class="form-control" value="'.htmlspecialchars($articulo['titulo']).'" required></div>';
+$form .= '<div class="mb-3"><label>Slug (URL)</label><input type="text" name="slug" class="form-control" value="'.htmlspecialchars($articulo['slug']).'" required></div>';
+$form .= '<div class="mb-3"><label>Autor</label><input type="text" name="autor" class="form-control" value="'.htmlspecialchars($articulo['autor']).'" required></div>';
+$form .= '<div class="mb-3"><label>Contenido</label><textarea name="contenido" class="form-control" rows="8" required>'.htmlspecialchars($articulo['contenido']).'</textarea></div>';
+$form .= '<div class="mb-3"><label>Resumen</label><textarea name="resumen" class="form-control" rows="2">'.htmlspecialchars($articulo['resumen']).'</textarea></div>';
+$form .= '<div class="mb-3"><label>Fecha de publicación</label><input type="date" name="fecha_publicacion" class="form-control" value="'.htmlspecialchars($articulo['fecha_publicacion']).'" required></div>';
+$form .= '<div class="mb-3"><label>Estado</label><select name="estado" class="form-control">';
+$form .= '<option value="publicado"'.($articulo['estado']=='publicado'?' selected':'').'>Publicado</option>';
+$form .= '<option value="borrador"'.($articulo['estado']=='borrador'?' selected':'').'>Borrador</option>';
+$form .= '</select></div>';
+$form .= '<div class="mb-3"><label>SEO Title</label><input type="text" name="seo_title" class="form-control" value="'.htmlspecialchars($articulo['seo_title']).'"></div>';
+$form .= '<div class="mb-3"><label>SEO Description</label><input type="text" name="seo_description" class="form-control" value="'.htmlspecialchars($articulo['seo_description']).'"></div>';
+$form .= '<div class="mb-3"><label>Categoría</label><select name="categoria_id" class="form-control">';
+foreach ($categorias as $cat) {
+    $form .= '<option value="'.$cat['id'].'"'.($articulo['categoria_id']==$cat['id']?' selected':'').'>'.htmlspecialchars($cat['nombre']).'</option>';
+}
+$form .= '</select></div>';
+$form .= '<button class="btn btn-primary" type="submit">Guardar cambios</button>';
+$form .= '</form>';
+
+renderLayout('Editar Blog', $form);
