@@ -24,22 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `BlogArticulos`
---
-
-CREATE TABLE `BlogArticulos` (
-  `id` int(11) NOT NULL,
-  `titulo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `autor` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `seccion` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `contenido` text COLLATE utf8_unicode_ci NOT NULL,
-  `fecha_publicacion` datetime DEFAULT CURRENT_TIMESTAMP,
-  `actualizado_en` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `Usuarios`
 --
 
@@ -77,12 +61,6 @@ INSERT INTO `Usuarios` (`id`, `nombre`, `email`, `password_hash`, `telefono`, `r
 --
 
 --
--- Indices de la tabla `BlogArticulos`
---
-ALTER TABLE `BlogArticulos`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `Usuarios`
 --
 ALTER TABLE `Usuarios`
@@ -94,12 +72,6 @@ ALTER TABLE `Usuarios`
 --
 
 --
--- AUTO_INCREMENT de la tabla `BlogArticulos`
---
-ALTER TABLE `BlogArticulos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `Usuarios`
 --
 ALTER TABLE `Usuarios`
@@ -109,43 +81,6 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
--- Categorías (si no existen)
-INSERT INTO BlogCategorias (nombre, slug) VALUES ('Mindset & Liderazgo', 'mindset-liderazgo');
-INSERT INTO BlogCategorias (nombre, slug) VALUES ('Negocios & Estrategia', 'negocios-estrategia');
-
--- Artículo 1: El Hombre de Valor
-INSERT INTO BlogArticulos (
-  titulo, slug, autor, contenido, resumen, fecha_publicacion, estado, seo_title, seo_description, categoria_id
-) VALUES (
-  'El Hombre de Valor La filosofía KRNIVORO hecha historia',
-  'el-hombre-de-valor',
-  'Equipo KRNIVORO',
-  '“El Hombre de Valor” — la filosofía KRNIVORO hecha historia.\n\nNO TODOS LOS HOMBRES SON IGUALES\nAlgunos se alimentan de excusas. Otros… de propósito.\nEl Hombre KRNIVORO no busca aprobación ni aplausos; busca precisión, energía y resultados.\nNo come por ansiedad, ni trabaja por ego. Se nutre para rendir, piensa para construir y se entrena para liderar.\nFUERZA ANTES QUE FORMA\nEn un mundo saturado de distracciones, el cuerpo se convierte en el primer reflejo del carácter.\nPor eso en KRNIVORO, la salud no es estética: es estrategia.\nLa dieta carnívora, los sueros IV, la medicina regenerativa, los entrenamientos funcionales y la suplementación inteligente no son moda — son el sistema operativo del líder moderno.\nCada corte de carne grass-fed, cada hora en el gimnasio, cada decisión en la mesa o en la junta… es parte de un solo objetivo: mantenerte indestructible.',
-  'La filosofía KRNIVORO aplicada al liderazgo y salud.',
-  '2025-10-17',
-  'publicado',
-  'El Hombre de Valor | KRNIVORO',
-  'Descubre la filosofía KRNIVORO para líderes: salud, mindset y fuerza.',
-  (SELECT id FROM BlogCategorias WHERE slug='mindset-liderazgo')
-);
-
--- Artículo 2: KRNIVORO Business Week
-INSERT INTO BlogArticulos (
-  titulo, slug, autor, contenido, resumen, fecha_publicacion, estado, seo_title, seo_description, categoria_id
-) VALUES (
-  'KRNIVORO Business Week Lo más importante que debes saber',
-  'krnivoro-business-week',
-  'Equipo KRNIVORO',
-  'KRNIVORO Business Week: Lo más importante que debes saber\nPanorama General\nEsta semana destaca por movimientos estratégicos en infraestructura, comercio exterior y reformas arancelarias que apuntan a ajustar el rumbo empresarial del país. Aquí tienes las piezas clave:\nMéxico encara retos de inversión en infraestructura\nA pesar de un aparente crecimiento en planes presupuestarios 2026, expertos advierten que el verdadero impulso está estancado. La inversión pública real muestra señales de fatiga, mientras que la iniciativa privada exige certidumbre y reglas claras.\nAranceles alineados con tendencias globales\nLa Presidencia revisa una reforma arancelaria ambiciosa para 2026 que busca adaptarse al nuevo mapa comercial mundial. Se espera que México redefina su estrategia con EE.UU., China y bloque regionales.\nFormación para la industria 4.0\nFrente a la ola de nearshoring, empiezan a surgir nuevas alianzas entre empresas y universidades para capacitar talento en competencias tecnológicas avanzadas. La meta: que México sea un polo de manufactura especializada.\nRecomendación estratégica\nMonitorea las reformas arancelarias: quienes ajusten rápido ganarán posición.\nInvolúcrate en programas de capacitación 4.0: tu ventaja competitiva estará ahí.\nEvalúa inversiones en activos tangibles (infraestructura privada) frente a incertidumbre pública.',
-  'Resumen de la semana de negocios y estrategia en KRNIVORO.',
-  '2025-10-17',
-  'publicado',
-  'KRNIVORO Business Week | KRNIVORO',
-  'Lo más importante de la semana en negocios, estrategia y formación.',
-  (SELECT id FROM BlogCategorias WHERE slug='negocios-estrategia')
-);
 
 
 -- --------------------------------------------------------
@@ -202,16 +137,38 @@ CREATE TABLE BlogComentarios (
   FOREIGN KEY (articulo_id) REFERENCES BlogArticulos(id) ON DELETE CASCADE
 );
 
+-- Categorías (si no existen)
+INSERT INTO BlogCategorias (nombre, slug) VALUES ('Mindset & Liderazgo', 'mindset-liderazgo');
+INSERT INTO BlogCategorias (nombre, slug) VALUES ('Negocios & Estrategia', 'negocios-estrategia');
 
--- --------------------------------------------------------
--- Estructura de tabla para la tabla `UsuarioImagenes`
---
-CREATE TABLE `UsuarioImagenes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario_id` int(11) NOT NULL,
-  `imagen_base64` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `fecha_subida` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `usuario_id` (`usuario_id`),
-  CONSTRAINT `fk_usuario_imagen` FOREIGN KEY (`usuario_id`) REFERENCES `Usuarios`(`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+-- Artículo 1: El Hombre de Valor
+INSERT INTO BlogArticulos (
+  titulo, slug, autor, contenido, resumen, fecha_publicacion, estado, seo_title, seo_description, categoria_id
+) VALUES (
+  'El Hombre de Valor La filosofía KRNIVORO hecha historia',
+  'el-hombre-de-valor',
+  'Equipo KRNIVORO',
+  '“El Hombre de Valor” — la filosofía KRNIVORO hecha historia.\n\nNO TODOS LOS HOMBRES SON IGUALES\nAlgunos se alimentan de excusas. Otros… de propósito.\nEl Hombre KRNIVORO no busca aprobación ni aplausos; busca precisión, energía y resultados.\nNo come por ansiedad, ni trabaja por ego. Se nutre para rendir, piensa para construir y se entrena para liderar.\nFUERZA ANTES QUE FORMA\nEn un mundo saturado de distracciones, el cuerpo se convierte en el primer reflejo del carácter.\nPor eso en KRNIVORO, la salud no es estética: es estrategia.\nLa dieta carnívora, los sueros IV, la medicina regenerativa, los entrenamientos funcionales y la suplementación inteligente no son moda — son el sistema operativo del líder moderno.\nCada corte de carne grass-fed, cada hora en el gimnasio, cada decisión en la mesa o en la junta… es parte de un solo objetivo: mantenerte indestructible.',
+  'La filosofía KRNIVORO aplicada al liderazgo y salud.',
+  '2025-10-17',
+  'publicado',
+  'El Hombre de Valor | KRNIVORO',
+  'Descubre la filosofía KRNIVORO para líderes: salud, mindset y fuerza.',
+  (SELECT id FROM BlogCategorias WHERE slug='mindset-liderazgo')
+);
+
+-- Artículo 2: KRNIVORO Business Week
+INSERT INTO BlogArticulos (
+  titulo, slug, autor, contenido, resumen, fecha_publicacion, estado, seo_title, seo_description, categoria_id
+) VALUES (
+  'KRNIVORO Business Week Lo más importante que debes saber',
+  'krnivoro-business-week',
+  'Equipo KRNIVORO',
+  'KRNIVORO Business Week: Lo más importante que debes saber\nPanorama General\nEsta semana destaca por movimientos estratégicos en infraestructura, comercio exterior y reformas arancelarias que apuntan a ajustar el rumbo empresarial del país. Aquí tienes las piezas clave:\nMéxico encara retos de inversión en infraestructura\nA pesar de un aparente crecimiento en planes presupuestarios 2026, expertos advierten que el verdadero impulso está estancado. La inversión pública real muestra señales de fatiga, mientras que la iniciativa privada exige certidumbre y reglas claras.\nAranceles alineados con tendencias globales\nLa Presidencia revisa una reforma arancelaria ambiciosa para 2026 que busca adaptarse al nuevo mapa comercial mundial. Se espera que México redefina su estrategia con EE.UU., China y bloque regionales.\nFormación para la industria 4.0\nFrente a la ola de nearshoring, empiezan a surgir nuevas alianzas entre empresas y universidades para capacitar talento en competencias tecnológicas avanzadas. La meta: que México sea un polo de manufactura especializada.\nRecomendación estratégica\nMonitorea las reformas arancelarias: quienes ajusten rápido ganarán posición.\nInvolúcrate en programas de capacitación 4.0: tu ventaja competitiva estará ahí.\nEvalúa inversiones en activos tangibles (infraestructura privada) frente a incertidumbre pública.',
+  'Resumen de la semana de negocios y estrategia en KRNIVORO.',
+  '2025-10-17',
+  'publicado',
+  'KRNIVORO Business Week | KRNIVORO',
+  'Lo más importante de la semana en negocios, estrategia y formación.',
+  (SELECT id FROM BlogCategorias WHERE slug='negocios-estrategia')
+);
