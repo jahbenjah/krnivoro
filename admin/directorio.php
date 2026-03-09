@@ -2,22 +2,143 @@
 session_start();
 if (!isset($_SESSION['usuario_id'])) {
         header('Location: /admin/login.php');
-        exit;
-}
-require_once __DIR__.'/../config.php';
-require_once __DIR__.'/layout.php';
+        <?php
+        session_start();
+        if (!isset($_SESSION['usuario_id'])) {
+            header('Location: /admin/login.php');
+            exit;
+        }
+        $nombre = $_SESSION['nombre'] ?? 'Usuario';
+        $rol = $_SESSION['rol'] ?? '';
 
-$pdo = getPDO();
-$rol = null;
-if (isset($_SESSION['usuario_id'])) {
-        $stmt = $pdo->prepare("SELECT rol FROM Usuarios WHERE id = ? LIMIT 1");
-        $stmt->execute([$_SESSION['usuario_id']]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($row) $rol = $row['rol'];
-}
-
-$sidebar = '<ul class="nav flex-column text-white">';
-if ($rol === 'admin') {
+        ?><!DOCTYPE html>
+        <html lang="es-mx">
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Administrador del Directorio | Krnivoro</title>
+            <link rel="icon" type="image/png" href="/assets/img/krnivoro/favicon/favicon-96x96.png" sizes="96x96" />
+            <link rel="icon" type="image/svg+xml" href="/assets/img/krnivoro/favicon/favicon.svg" />
+            <link rel="shortcut icon" href="/assets/img/krnivoro/favicon/favicon.ico" />
+            <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/krnivoro/favicon/apple-touch-icon.png" />
+            <link rel="manifest" href="/assets/img/krnivoro/favicon/site.webmanifest" />
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+            <link rel="stylesheet" href="/assets/styles.css">
+        </head>
+        <body class="index-page">
+            <header id="header" class="header d-flex align-items-center fixed-top">
+                <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+                    <a href="/index.html" class="logo d-flex align-items-center me-auto me-lg-0">
+                        <img src="/assets/img/krnivoro.png" alt="Krnivoro Logo">
+                    </a>
+                    <nav id="navmenu" class="navmenu">
+                        <ul>
+                            <li><a href="/admin/dashboard.php">Dashboard</a></li>
+                            <li><a href="/admin/directorio.php" class="active">Directorio</a></li>
+                            <li><a href="/admin/blog.php">Blog</a></li>
+                            <li><a href="/admin/perfil.php">Perfil</a></li>
+                            <li><form action="/admin/logout.php" method="post" style="display:inline;"><button type="submit" class="btn btn-danger">Cerrar Sesión</button></form></li>
+                        </ul>
+                        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                    </nav>
+                </div>
+            </header>
+            <main class="main pt-5" style="min-height:100vh;">
+                <div class="container mt-5">
+                    <h1 class="h3 mb-4">Panel de Administración</h1>
+                    <div class="table-responsive">
+                        <table id="tabla-usuarios" class="table table-striped table-bordered">
+                            <thead><tr><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Puesto</th><th>Empresa</th><th>Ciudad</th><th>Estado</th><th>País</th><th>Aprobado</th><th>Acción</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer dark-background mt-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="/index.html" class="logo d-flex align-items-center">
+                                <img src="/assets/img/krnivoro.png" alt="Krnivoro Logo">
+                            </a>
+                            <div class="footer-contact pt-3">
+                                <p><a href="tel:+5216643400882">+52 1 664 340 0882</a></p>
+                                <p><a href="mailto:info@krnivoro.com">info@krnivoro.com</a></p>
+                                <p><a href="https://maps.app.goo.gl/rYkPGA6gTngpSu9i8">Ensenada, México</a></p>
+                            </div>
+                            <div class="social-links d-flex mt-4">
+                                <a href="https://facebook.com"><i class="bi bi-facebook"></i></a>
+                                <a href="https://instagram.com"><i class="bi bi-instagram"></i></a>
+                                <a href="https://wa.me/5216643400882?text=Hola"><i class="bi bi-whatsapp"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Nuestros Servicios</h4>
+                            <ul>
+                                <li><a href="/doing-business-at-KRNIVORO.html">Doing Business at KRNIVORO</a></li>
+                                <li><a href="/KRNIVORO_sos.html">KRNIVORO SOS</a></li>
+                                <li><a href="/KRNIVORO_legal_protection.html">KRNIVORO Legal Protection</a></li>
+                                <li><a href="/KRNIVORO-dental-bernal.html">KRNIVORO Dental Bernal & Maxilofacial Excellence</a></li>
+                                <li><a href="/KRNIVORO_store.html">KRNIVORO Store – Select Cuts & Premium Nutrition</a></li>
+                                <li><a href="/KRNIVORO_outdoor.html">KRNIVORO Outdoor</a></li>
+                                <li><a href="/KRNIVORO_hospedaje.html">Hospedaje Restaurante y Viñedos</a></li>
+                                <li><a href="/KRNIVORO-medicina-premium.html">Sección Médica Premium</a></li>
+                                <li><a href="/KRNIVORO_transporte-ejecutivo.html">Transporte Ejecutivo</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Nuestros Socios</h4>
+                            <ul>
+                                <li><a href="/KRNIVORO_socioscomerciales.html">Socios Comerciales</a></li>
+                                <li><a href="/KRNIVORO_productos.html">Nuestros Productos</a></li>
+                                <li><a href="/contacto.html">Contacto</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+            <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    function cargarUsuarios() {
+                        $.get("/api/usuarios.php", function(usuarios) {
+                            const tbody = $("#tabla-usuarios tbody");
+                            tbody.empty();
+                            usuarios.forEach(function(u) {
+                                if (u.rol && u.rol === "admin") return;
+                                let aprobado = u.aprobado == 1 ? "Sí" : "No";
+                                let accion = "";
+                                if (u.aprobado == 0) {
+                                    accion = `<button class='btn btn-success btn-sm aprobar-btn' data-id='${u.id}'>Aprobar</button>`;
+                                }
+                                tbody.append(`<tr><td>${u.nombre}</td><td>${u.email}</td><td>${u.telefono || ""}</td><td>${u.puesto || ""}</td><td>${u.empresa || ""}</td><td>${u.ciudad || ""}</td><td>${u.estado || ""}</td><td>${u.pais || ""}</td><td>${aprobado}</td><td>${accion}</td></tr>`);
+                            });
+                            $("#tabla-usuarios").DataTable();
+                        });
+                    }
+                    cargarUsuarios();
+                    $(document).on("click", ".aprobar-btn", function() {
+                        const id = $(this).data("id");
+                        $.ajax({
+                            url: "/api/usuarios.php?aprobar=1",
+                            type: "PUT",
+                            data: JSON.stringify({id: id}),
+                            contentType: "application/json",
+                            success: function(resp) {
+                                alert("Usuario aprobado");
+                                cargarUsuarios();
+                            },
+                            error: function() {
+                                alert("Error al aprobar usuario");
+                            }
+                        });
+                    });
+                });
+            </script>
+        </body>
+        </html>
         $sidebar .= '<li class="nav-item mb-3"><a class="nav-link text-white" href="/admin/blog.php"><i class="bi bi-journal-text me-2"></i> Blog</a></li>';
 }
 $sidebar .= '<li class="nav-item mb-3"><a class="nav-link text-white active" aria-current="page" href="/admin/directorio.php"><i class="bi bi-people me-2"></i> Directorio</a></li>';

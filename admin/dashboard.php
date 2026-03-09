@@ -76,14 +76,11 @@ renderLayout('Dashboard KRNIVORO', $dashboardContent);
                     <input type="text" name="buscar" class="form-control" placeholder="Buscar por nombre, empresa o ciudad" value="<?php echo htmlspecialchars($_GET['buscar'] ?? ''); ?>">
                     <button class="btn btn-primary" type="submit">Buscar</button>
                 </div>
-            </form>
             <?php
-            $query = "SELECT nombre, puesto, empresa, ciudad, estado, pais, email FROM Usuarios WHERE aprobado = 1";
-            $params = [];
-            if (!empty($_GET['buscar'])) {
-                $query .= " AND (nombre LIKE ? OR empresa LIKE ? OR ciudad LIKE ?)";
-                $busqueda = '%' . $_GET['buscar'] . '%';
-                $params = [$busqueda, $busqueda, $busqueda];
+            session_start();
+            if (!isset($_SESSION['usuario_id'])) {
+                header('Location: /admin/login.php');
+                exit;
             }
             $stmtDir = $pdo->prepare($query);
             $stmtDir->execute($params);
