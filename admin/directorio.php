@@ -1,23 +1,19 @@
 <?php
 session_start();
 if (!isset($_SESSION['usuario_id'])) {
-        header('Location: /admin/login.php');
-        <?php
-        session_start();
-        if (!isset($_SESSION['usuario_id'])) {
-            header('Location: /admin/login.php');
-            exit;
-        }
-        $nombre = $_SESSION['nombre'] ?? 'Usuario';
-        $rol = $_SESSION['rol'] ?? '';
-
-        ?><!DOCTYPE html>
-        <html lang="es-mx">
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Administrador del Directorio | Krnivoro</title>
-            <link rel="icon" type="image/png" href="/assets/img/krnivoro/favicon/favicon-96x96.png" sizes="96x96" />
-            <link rel="icon" type="image/svg+xml" href="/assets/img/krnivoro/favicon/favicon.svg" />
+    header('Location: /admin/login.php');
+    exit;
+}
+$nombre = $_SESSION['nombre'] ?? 'Usuario';
+$rol = $_SESSION['rol'] ?? '';
+?>
+<!DOCTYPE html>
+<html lang="es-mx">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador del Directorio | Krnivoro</title>
+    <link rel="icon" type="image/png" href="/assets/img/krnivoro/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/krnivoro/favicon/favicon.svg" />
             <link rel="shortcut icon" href="/assets/img/krnivoro/favicon/favicon.ico" />
             <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/krnivoro/favicon/apple-touch-icon.png" />
             <link rel="manifest" href="/assets/img/krnivoro/favicon/site.webmanifest" />

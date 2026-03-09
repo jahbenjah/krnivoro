@@ -2,7 +2,7 @@
 session_start();
 header('Content-Type: application/json');
 
-$pdo = new PDO('mysql:host=localhost;dbname=krnivoro_db;charset=utf8mb4', 'krnivoro_db', 'Krnivoro.com1');
+$pdo = new PDO('mysql:host=localhost;dbname=karnivor_krnivoro;charset=utf8mb4', 'krnivoro_db', 'Krnivoro.com1');
 $method = $_SERVER['REQUEST_METHOD'];
 $data = json_decode(file_get_contents('php://input'), true);
 

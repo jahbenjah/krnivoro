@@ -3,7 +3,7 @@ session_start();
 header('Content-Type: application/json');
 
 // Configuración de la base de datos
-$pdo = new PDO('mysql:host=localhost;dbname=krnivoro_db;charset=utf8mb4', 'krnivoro_db', 'Krnivoro.com1');
+$pdo = new PDO('mysql:host=localhost;dbname=karnivor_krnivoro;charset=utf8mb4', 'karnivor_krnivoro', 'karnivor_krnivoro01');
 
 // Obtener método y datos
 $method = $_SERVER['REQUEST_METHOD'];
