@@ -37,11 +37,9 @@ $mainContent .= '<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTa
 $mainContent .= '<script>$(document).ready(function() {function cargarUsuarios() {$.get("/api/usuarios.php", function(usuarios) {const tbody = $("#tabla-usuarios tbody");tbody.empty();usuarios.forEach(function(u) {if (u.rol && u.rol === "admin") return;let aprobado = u.aprobado == 1 ? "Sí" : "No";let accion = "";if (u.aprobado == 0) {accion = `<button class=\"btn btn-success btn-sm aprobar-btn\" data-id=\"${u.id}\">Aprobar</button>`;}tbody.append(`<tr><td>${u.nombre}</td><td>${u.email}</td><td>${u.telefono || ""}</td><td>${u.puesto || ""}</td><td>${u.empresa || ""}</td><td>${u.ciudad || ""}</td><td>${u.estado || ""}</td><td>${u.pais || ""}</td><td>${aprobado}</td><td>${accion}</td></tr>`);});$("#tabla-usuarios").DataTable();});}cargarUsuarios();$(document).on("click", ".aprobar-btn", function() {const id = $(this).data("id");$.ajax({url: "/api/usuarios.php?aprobar=1",type: "PUT",data: JSON.stringify({id: id}),contentType: "application/json",success: function(resp) {alert("Usuario aprobado");cargarUsuarios();},error: function() {alert("Error al aprobar usuario");}});});});</script>';
 
 renderLayout('Administrador del Directorio | Krnivoro', '<nav class="col-md-2 bg-dark sidebar vh-100 d-block" style="min-height:100vh;position:fixed;left:0;top:0;z-index:1000;width:220px;"><div class="position-sticky pt-3">'.$sidebar.'</div></nav><main class="col-md-10 ms-auto px-md-4" id="main-content" style="min-height:100vh;margin-left:220px;"><div class="pt-4">'.$mainContent.'</div></main>');
-</script></head>
-
+?>
 <body class="index-page"><header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
         <a href="/index.html" class="logo d-flex align-items-center me-auto me-lg-0">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <img src="/assets/img/krnivoro.png" alt="Krnivoro Logo">

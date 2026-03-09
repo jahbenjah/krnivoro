@@ -59,7 +59,8 @@ if ($rol === 'admin') {
     </script>';
 }
 renderLayout('Dashboard KRNIVORO', $dashboardContent);
-        <a href="/admin/logout.php">Salir</a>
+?>
+    <a href="/admin/logout.php">Salir</a>
     </div>
     <div class="main">
         <h2>Bienvenido, <?php echo htmlspecialchars($nombre); ?>!</h2>
