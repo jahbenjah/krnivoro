@@ -71,6 +71,10 @@
                             <input id="email" type="email" name="email" class="form-control" placeholder="Email"
                                 required>
                         </div>
+                        <div class="col-md-6">
+                            <label class="form-label visually-hidden" for="password">Contraseña</label>
+                            <input id="password" type="password" name="password" class="form-control" placeholder="Contraseña" required>
+                        </div>
 
                         <div class="col-md-6">
                             <label class="form-label visually-hidden" for="telefono">Teléfono</label>
@@ -104,21 +108,22 @@
                             <input id="pais" type="text" name="pais" class="form-control" placeholder="País" required>
                         </div>
 
-                        <div class="col-12">
+                        <!-- <div class="col-12">
                             <label for="bio" class="form-label">Biografía / Servicios (opcional)</label>
                             <textarea id="bio" name="bio" rows="3" class="form-control"
                                 placeholder="Descripción breve"></textarea>
-                        </div>
+                        </div> -->
 
                         <div class="col-md-8">
                             <label for="imagen_file" class="form-label">Subir imagen de perfil (opcional)</label>
                             <input id="imagen_file" name="imagen_file" type="file" accept="image/*" class="form-control">
                         </div>
-                        <div class="col-md-4">
+                        
+                        <!-- <div class="col-md-4">
                             <label for="imagen" class="form-label">o URL de imagen</label>
                             <input id="imagen" type="url" name="imagen" class="form-control"
                                 placeholder="https://... (opcional)">
-                        </div>
+                        </div> -->
 
                         <div class="col-12 text-center">
                             <div class="loading" style="display:none;">Cargando</div>
@@ -200,9 +205,9 @@
                 ciudad: form.ciudad.value.trim(),
                 estado: form.estado.value.trim(),
                 pais: form.pais.value.trim(),
-                bio: form.bio.value.trim(),
-                imagen: form.imagen.value.trim(),
-                password: form.email.value.trim(), // Usar email como password temporal
+                bio: form.bio ? form.bio.value.trim() : '',
+                imagen: form.imagen ? form.imagen.value.trim() : '',
+                password: form.password.value.trim(),
                 imagen_base64: window.imagenBase64 || null // Nuevo campo para base64
             };
 
