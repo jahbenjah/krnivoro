@@ -64,7 +64,22 @@ if ($method === 'POST') {
         echo json_encode(['success' => true, 'id' => $usuario_id]);
     } catch (PDOException $e) {
         http_response_code(400);
-        echo json_encode(['error' => 'No se pudo registrar el usuario.']);
+        echo json_encode([
+            'error' => 'No se pudo registrar el usuario.',
+            'motivo' => $e->getMessage(),
+            'sqlstate' => $e->getCode(),
+            'query' => $sql,
+            'datos' => [
+                'nombre' => $data['nombre'],
+                'email' => $data['email'],
+                'telefono' => $data['telefono'],
+                'puesto' => $data['puesto'],
+                'empresa' => $data['empresa'],
+                'ciudad' => $data['ciudad'],
+                'estado' => $data['estado'],
+                'pais' => $data['pais']
+            ]
+        ]);
     }
     exit;
 }
