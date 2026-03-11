@@ -11,7 +11,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 // LISTAR miembros del directorio
 if ($method === 'GET') {
-    $stmt = $pdo->query("SELECT id, nombre, email, telefono, puesto, empresa, ciudad, estado, pais, imagen, bio, rol, aprobado FROM Usuarios WHERE rol = 'directorio'");
+    $stmt = $pdo->query("SELECT u.id, u.nombre, u.email, u.telefono, u.puesto, u.empresa, u.ciudad, u.estado, u.pais, ui.imagen_base64 AS imagen, u.bio, u.rol, u.aprobado FROM Usuarios u LEFT JOIN UsuarioImagenes ui ON u.id = ui.usuario_id WHERE u.rol = 'directorio'");
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
     exit;
 }

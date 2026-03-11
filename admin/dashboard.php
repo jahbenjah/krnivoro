@@ -99,7 +99,7 @@ renderLayout('Dashboard KRNIVORO', $dashboardContent);
                                 <?php
                                 // Mostrar imagen de perfil en base64 si existe
                                 if (!empty($pro['imagen'])) {
-                                    echo '<img src="data:image/png;base64,'.htmlspecialchars($pro['imagen']).'" alt="Perfil" class="img-fluid rounded-circle mb-2" style="width:80px;height:80px;object-fit:cover;">';
+                                    echo '<img src="'.htmlspecialchars($pro['imagen']).'" alt="Perfil" class="img-fluid rounded-circle mb-2" style="width:80px;height:80px;object-fit:cover;">';
                                 }
                                 ?>
                                 <h5 class="card-title"><?php echo htmlspecialchars($pro['nombre']); ?></h5>

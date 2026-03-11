@@ -1,56 +1,29 @@
 <?php
 session_start();
+require_once __DIR__.'/../config.php';
+require_once __DIR__.'/layout.php';
 if (!isset($_SESSION['usuario_id'])) {
     header('Location: /admin/login.php');
     exit;
 }
-$nombre = $_SESSION['nombre'] ?? 'Usuario';
-$rol = $_SESSION['rol'] ?? '';
-?>
-<!DOCTYPE html>
-<html lang="es-mx">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrador del Directorio | Krnivoro</title>
-    <link rel="icon" type="image/png" href="/assets/img/krnivoro/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/assets/img/krnivoro/favicon/favicon.svg" />
-            <link rel="shortcut icon" href="/assets/img/krnivoro/favicon/favicon.ico" />
-            <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/krnivoro/favicon/apple-touch-icon.png" />
-            <link rel="manifest" href="/assets/img/krnivoro/favicon/site.webmanifest" />
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-            <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-            <link rel="stylesheet" href="/assets/styles.css">
-        </head>
-        <body class="index-page">
-            <header id="header" class="header d-flex align-items-center fixed-top">
-                <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-                    <a href="/index.html" class="logo d-flex align-items-center me-auto me-lg-0">
-                        <img src="/assets/img/krnivoro.png" alt="Krnivoro Logo">
-                    </a>
-                    <nav id="navmenu" class="navmenu">
-                        <ul>
-                            <li><a href="/admin/dashboard.php">Dashboard</a></li>
-                            <li><a href="/admin/directorio.php" class="active">Directorio</a></li>
-                            <li><a href="/admin/blog.php">Blog</a></li>
-                            <li><a href="/admin/perfil.php">Perfil</a></li>
-                            <li><form action="/admin/logout.php" method="post" style="display:inline;"><button type="submit" class="btn btn-danger">Cerrar Sesión</button></form></li>
-                        </ul>
-                        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-                    </nav>
-                </div>
-            </header>
-            <main class="main pt-5" style="min-height:100vh;">
-                <div class="container mt-5">
-                    <h1 class="h3 mb-4">Panel de Administración</h1>
-                    <div class="table-responsive">
-                        <table id="tabla-usuarios" class="table table-striped table-bordered">
-                            <thead><tr><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Puesto</th><th>Empresa</th><th>Ciudad</th><th>Estado</th><th>País</th><th>Aprobado</th><th>Acción</th></tr></thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
-                </div>
-            </main>
+$pdo = getPDO();
+$stmt = $pdo->prepare("SELECT nombre, rol FROM Usuarios WHERE id = ?");
+$stmt->execute([$_SESSION['usuario_id']]);
+$usuario = $stmt->fetch();
+$nombre = $usuario['nombre'] ?? 'Usuario';
+$rol = $usuario['rol'] ?? '';
+
+$directorioContent = '';
+$directorioContent .= '<h1 class="h3 mb-4">Panel de Administración</h1>';
+$directorioContent .= '<div class="table-responsive">';
+$directorioContent .= '<table id="tabla-usuarios" class="table table-striped table-bordered">';
+$directorioContent .= '<thead><tr><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Puesto</th><th>Empresa</th><th>Ciudad</th><th>Estado</th><th>País</th><th>Aprobado</th><th>Acción</th></tr></thead><tbody></tbody></table>';
+$directorioContent .= '</div>';
+$directorioContent .= '<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>';
+$directorioContent .= '<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>';
+$directorioContent .= '<script>$(document).ready(function() {function cargarUsuarios() {$.get("/api/usuarios.php", function(usuarios) {const tbody = $("#tabla-usuarios tbody");tbody.empty();usuarios.forEach(function(u) {if (u.rol && u.rol === "admin") return;let aprobado = u.aprobado == 1 ? "Sí" : "No";let accion = "";if (u.aprobado == 0) {accion = `<button class=\"btn btn-success btn-sm aprobar-btn\" data-id=\"${u.id}\">Aprobar</button>`;}tbody.append(`<tr><td>${u.nombre}</td><td>${u.email}</td><td>${u.telefono || ""}</td><td>${u.puesto || ""}</td><td>${u.empresa || ""}</td><td>${u.ciudad || ""}</td><td>${u.estado || ""}</td><td>${u.pais || ""}</td><td>${aprobado}</td><td>${accion}</td></tr>`);});$("#tabla-usuarios").DataTable();});}cargarUsuarios();$(document).on("click", ".aprobar-btn", function() {const id = $(this).data("id");$.ajax({url: "/api/usuarios.php?aprobar=1",type: "PUT",data: JSON.stringify({id: id}),contentType: "application/json",success: function(resp) {alert("Usuario aprobado");cargarUsuarios();},error: function() {alert("Error al aprobar usuario");}});});});</script>';
+
+renderLayout('Administrador del Directorio | Krnivoro', $directorioContent);
             <footer id="footer" class="footer dark-background mt-5">
                 <div class="container">
                     <div class="row">
@@ -207,11 +180,12 @@ renderLayout('Administrador del Directorio | Krnivoro', '<nav class="col-md-2 bg
                             // Obtener el rol del usuario
                             $rol = null;
                             if (isset($_SESSION['usuario_id'])) {
-                                    $pdo = new PDO('mysql:host=localhost;dbname=krnivoro_db;charset=utf8mb4', 'krnivoro_db', 'Krnivoro.com1');
-                                    $stmt = $pdo->prepare("SELECT rol FROM Usuarios WHERE id = ? LIMIT 1");
-                                    $stmt->execute([$_SESSION['usuario_id']]);
-                                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                                    if ($row) $rol = $row['rol'];
+                                require_once __DIR__.'/../config.php';
+                                $pdo = getPDO();
+                                $stmt = $pdo->prepare("SELECT rol FROM Usuarios WHERE id = ? LIMIT 1");
+                                $stmt->execute([$_SESSION['usuario_id']]);
+                                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                                if ($row) $rol = $row['rol'];
                             }
                             if ($rol === 'admin') {
                             ?>
