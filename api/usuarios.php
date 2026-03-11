@@ -11,7 +11,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 // LISTAR miembros del directorio
 if ($method === 'GET') {
-    $stmt = $pdo->query("SELECT id, nombre, email, telefono, puesto, empresa, ciudad, estado, pais, imagen, bio, rol, aprobado FROM Usuarios");
+    $stmt = $pdo->query("SELECT id, nombre, email, telefono, puesto, empresa, ciudad, estado, pais, imagen, bio, rol, aprobado FROM Usuarios WHERE rol = 'directorio'");
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
     exit;
 }

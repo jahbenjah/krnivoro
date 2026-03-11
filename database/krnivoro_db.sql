@@ -56,6 +56,11 @@ INSERT INTO `Usuarios` (`id`, `nombre`, `email`, `password_hash`, `telefono`, `r
 (5, 'Elena Ruiz', 'elena.ruiz@innovatrade.com', '$2y$10$e0NR3Qw3Qw3Qw3Qw3Qw1Qe0NR3Qw3Qw3Qw3Qw3Qw3Qw3Qw3Qw', '6865554321', 'directorio', '2025-12-03 18:00:00', 'Directora General', 'Innova Trade Group', 'Mexicali', 'B.C.', 'México', NULL, 'Líder en comercio exterior y logística.', 1),
 (6, 'Carlos Pérez', 'carlos.perez@consulting.com', '$2y$10$e0NR4Qw4Qw4Qw4Qw4Qw1Qe0NR4Qw4Qw4Qw4Qw4Qw4Qw4Qw4Qw', '6641237890', 'directorio', '2025-12-04 19:00:00', 'Consultor Senior', 'Consulting Group', 'Tijuana', 'B.C.', 'México', NULL, 'Consultor en estrategia empresarial.', 0);
 
+
+INSERT INTO `Usuarios` (`nombre`, `email`, `password_hash`, `telefono`, `rol`, `creado_en`, `puesto`, `empresa`, `ciudad`, `estado`, `pais`, `imagen`, `bio`, `aprobado`) VALUES ('Admin Karnivoro', 'admin@krnivoro.com', '$2y$12$m2H4zn4vlSJUVUJIkXAGvetvbnfNWtpSG3FmmZrSBFf4VEcx55pcG', '6611724066', 'admin', '2025-06-16 06:46:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+
+INSERT INTO `Usuarios` (`nombre`, `email`, `password_hash`, `telefono`, `rol`, `creado_en`, `puesto`, `empresa`, `ciudad`, `estado`, `pais`, `imagen`, `bio`, `aprobado`) VALUES ('Javier Manzo', 'jarvierm@krnivoro.com', '$2y$12$MDlzea2BuyIQTL2chsBE.e.VluiiXK2DAiJqRi9oblxVEo2M.1XT2', '6611724066', 'directorio', '2025-06-16 06:46:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+
 --
 -- Índices para tablas volcadas
 --

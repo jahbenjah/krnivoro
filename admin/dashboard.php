@@ -63,10 +63,7 @@ renderLayout('Dashboard KRNIVORO', $dashboardContent);
     <a href="/admin/logout.php">Salir</a>
     </div>
     <div class="main">
-        <h2>Bienvenido, <?php echo htmlspecialchars($nombre); ?>!</h2>
-        <p>Panel de administración KRNIVORO.</p>
-        <a href="/admin/perfil.php" class="btn btn-outline-primary mb-3">Editar mi perfil</a>
-        <hr>
+       
         <?php if ($rol === 'directorio' && !$aprobado): ?>
             <div class="alert alert-warning">Tu aplicación está en revisión. El equipo de KRNIVORO está revisando tus datos. Pronto recibirás una notificación.</div>
         <?php elseif ($rol === 'directorio'): ?>
@@ -82,7 +79,15 @@ renderLayout('Dashboard KRNIVORO', $dashboardContent);
                 header('Location: /admin/login.php');
                 exit;
             }
-            $stmtDir = $pdo->prepare($query);
+            // Filtro: solo profesionales con rol 'directorio'
+            $buscar = $_GET['buscar'] ?? '';
+            $sql = "SELECT u.*, ui.imagen_base64 AS imagen FROM Usuarios u LEFT JOIN UsuarioImagenes ui ON u.id = ui.usuario_id WHERE u.rol = 'directorio' AND u.aprobado = 1";
+            $params = [];
+            if ($buscar) {
+                $sql .= " AND (u.nombre LIKE ? OR u.empresa LIKE ? OR u.ciudad LIKE ?)";
+                $params = ["%$buscar%", "%$buscar%", "%$buscar%"];
+            }
+            $stmtDir = $pdo->prepare($sql);
             $stmtDir->execute($params);
             $profesionales = $stmtDir->fetchAll();
             ?>
@@ -91,6 +96,12 @@ renderLayout('Dashboard KRNIVORO', $dashboardContent);
                     <div class="col-md-4 mb-3">
                         <div class="card">
                             <div class="card-body">
+                                <?php
+                                // Mostrar imagen de perfil en base64 si existe
+                                if (!empty($pro['imagen'])) {
+                                    echo '<img src="data:image/png;base64,'.htmlspecialchars($pro['imagen']).'" alt="Perfil" class="img-fluid rounded-circle mb-2" style="width:80px;height:80px;object-fit:cover;">';
+                                }
+                                ?>
                                 <h5 class="card-title"><?php echo htmlspecialchars($pro['nombre']); ?></h5>
                                 <p class="card-text">
                                     <strong><?php echo htmlspecialchars($pro['puesto']); ?></strong><br>
