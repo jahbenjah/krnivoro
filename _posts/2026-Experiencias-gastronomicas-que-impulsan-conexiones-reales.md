@@ -19,6 +19,5 @@ No es solo una cena, es una vivencia. K-rnívoro ofrece escenarios donde la alta
 estrategia empresarial se encuentran. Creamos momentos que fortalecen redes
 profesionales y despiertan colaboraciones con impacto.
 
-### *Conclusión y CTA*
-👉 Vive la experiencia gastronómica K-rnívoro.
+Vive la experiencia gastronómica K-rnívoro.
 Transforma tus reuniones en experiencias que fortalezcan tus conexiones.

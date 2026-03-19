@@ -20,6 +20,5 @@ Cuando las personas se sienten valoradas, las ideas fluyen. Por eso, nuestros ev
 están diseñados para crear un ambiente de confianza, donde los líderes puedan conectar
 con libertad, disfrutar del entorno y generar alianzas reales.
 
-### *Conclusión y CTA*
-👉 Descubre la hospitalidad K-rnívoro: experiencias exclusivas diseñadas para inspirar y
+Descubre la hospitalidad K-rnívoro: experiencias exclusivas diseñadas para inspirar y
 conectar.

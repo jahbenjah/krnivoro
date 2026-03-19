@@ -19,6 +19,6 @@ El servicio Krnívoro combina hospitalidad de lujo con medidas que reflejan prof
 respeto. Nuestros clientes saben que la seguridad es parte esencial de la experiencia
 premium que ofrecemos.
 
-### *Conclusión y CTA*
-👉 Vive la tranquilidad del lujo K-rnívoro.
+
+Vive la tranquilidad del lujo K-rnívoro.
 Confort, elegancia y seguridad en cada experiencia.

@@ -22,6 +22,6 @@ En K-rnívoro no solo se comparten ideas, sino experiencias. Creemos que las rel
 más sólidas nacen cuando hay autenticidad y un entorno que fomente el disfrute. Nuestro
 objetivo es que cada encuentro deje una huella profesional, personal y emocional.
 
-👉 Experimenta el poder del networking con sabor.
+Experimenta el poder del networking con sabor.
 
 Vive K-rnívoro, donde los negocios se mezclan con el arte del lujo y la hospitalidad.
