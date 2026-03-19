@@ -1,5 +1,5 @@
 ---
-title: Seguridad ejecutiva - el lujo invisible de cada experiencia K-rnívoro
+title: Seguridad ejecutiva - el lujo invisible de cada experiencia K-rnívoro.
 layout: blog
 autor: Equipo KRNIVORO
 seccion: Mindset & Liderazgo

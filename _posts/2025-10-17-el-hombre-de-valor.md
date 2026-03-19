@@ -1,5 +1,5 @@
 ---
-title: El Hombre de Valor La filosofía KRNIVORO hecha historia
+title: El Hombre de Valor La filosofía KRNIVORO hecha historia.
 layout: blog
 autor: Equipo KRNIVORO
 seccion: Mindset & Liderazgo
@@ -9,13 +9,13 @@ seccion: Mindset & Liderazgo
 
 ---
 
-# 🧠 *EL HOMBRE DE VALOR – LA FILOSOFÍA KRNIVORO*
+# *EL HOMBRE DE VALOR – LA FILOSOFÍA KRNIVORO*
 
 Por Equipo KRNIVORO | Octubre 2025 | Sección: Mindset & Liderazgo
 
 ---
 
-### 🔥 *NO TODOS LOS HOMBRES SON IGUALES*
+### *NO TODOS LOS HOMBRES SON IGUALES*
 
 Algunos se alimentan de excusas.
 Otros… de propósito.
@@ -25,7 +25,7 @@ No come por ansiedad, ni trabaja por ego. Se nutre para rendir, piensa para cons
 
 ---
 
-### 🥩 *FUERZA ANTES QUE FORMA*
+### *FUERZA ANTES QUE FORMA*
 
 En un mundo saturado de distracciones, el cuerpo se convierte en el primer reflejo del carácter.
 Por eso en KRNIVORO, la salud no es estética: es estrategia.
@@ -37,7 +37,7 @@ es parte de un solo objetivo: *mantenerte indestructible.*
 
 ---
 
-### 🧬 *LA MENTE COMO ARMA*
+### *LA MENTE COMO ARMA*
 
 Un hombre de valor no reacciona: analiza.
 No grita: actúa.
@@ -51,7 +51,7 @@ El modelo KRNIVORO integra neurociencia, psicología aplicada y mentalidad de al
 
 ---
 
-### 💼 *HACER NEGOCIOS CON ALMA*
+### *HACER NEGOCIOS CON ALMA*
 
 KRNIVORO no es solo bienestar: es una forma de hacer negocios.
 Nuestros servicios corporativos nacen de lo vivido — de empresas que cayeron y se levantaron.
@@ -64,7 +64,7 @@ Aquí, un negocio no solo crece.
 
 ---
 
-### 🧘 *VIVIR EN EQUILIBRIO SIN PEDIR PERMISO*
+### *VIVIR EN EQUILIBRIO SIN PEDIR PERMISO*
 
 KRNIVORO no predica la perfección.
 Predica el equilibrio entre poder y paz, entre intensidad y propósito.
@@ -76,7 +76,7 @@ Por eso creamos experiencias que van desde terapias regenerativas, golf y pesca 
 
 ---
 
-### ⚡ *LA REGLA DE ORO KRNIVORO*
+### *LA REGLA DE ORO KRNIVORO*
 
 1. Come con propósito.
 2. Entrena con disciplina.
@@ -86,7 +86,7 @@ Por eso creamos experiencias que van desde terapias regenerativas, golf y pesca 
 
 ---
 
-### 🏁 *CONCLUSIÓN*
+### *CONCLUSIÓN*
 
 El mundo no necesita más empresarios cansados, ni líderes rotos detrás de un traje.
 Necesita *hombres de valor*: sanos, enfocados y libres.
@@ -97,10 +97,10 @@ una comunidad de líderes que aprendieron que el éxito no se presume…
 
 ---
 
-### ✅ *Call to Action*
+### *Call to Action*
 
-> 💥 Vivir. Comer. Liderar. Al Estilo KRNIVORO.
+> Vivir. Comer. Liderar. Al Estilo KRNIVORO.
 > 
->🔗 [Agenda tu evaluación ejecutiva →](#contacto)
+> [Agenda tu evaluación ejecutiva →](#contacto)
 > 
 >KRNIVORO – Where Deals Meet Lifestyle.
