@@ -26,7 +26,7 @@ plugins:
   - jekyll-paginate
 
 twitter:
-  username: CentroRosarito
+  username: krnivoro
   card: summary
 
 
@@ -73,4 +73,4 @@ defaults:
         path: /assets/img/logo-krnivoro-og.jpg
         height: 200
         width: 200
-      author: Rosarito Centro
+      author: Krnivoro

@@ -8,7 +8,7 @@ function renderLayout($title, $content) {
         <meta charset="UTF-8">
 <title><?php echo htmlspecialchars($title); ?></title>
 <meta property="og:title" content="Krnivoro Experiencias Gastronómicas y Networking de Alto Nivel" />
-<meta name="author" content="Rosarito Centro" />
+<meta name="author" content="Krnivoro" />
 <meta property="og:locale" content="es_mx" />
 <meta name="description" content="Conectamos líderes visionarios a través de sabores memorables, vínculos estratégicos y experiencias exclusivas que trascienden fronteras." />
 <meta property="og:description" content="Conectamos líderes visionarios a través de sabores memorables, vínculos estratégicos y experiencias exclusivas que trascienden fronteras." />
@@ -22,10 +22,10 @@ function renderLayout($title, $content) {
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:image" content="https://krnivoro.com/assets/img/logo-krnivoro-og.jpg" />
 <meta property="twitter:title" content="Krnivoro Experiencias Gastronómicas y Networking de Alto Nivel" />
-<meta name="twitter:site" content="@CentroRosarito" />
-<meta name="twitter:creator" content="@Rosarito Centro" />
+<meta name="twitter:site" content="@krnivoro" />
+<meta name="twitter:creator" content="@krnivoro" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Rosarito Centro"},"description":"Conectamos líderes visionarios a través de sabores memorables, vínculos estratégicos y experiencias exclusivas que trascienden fronteras.","headline":"Krnivoro Experiencias Gastronómicas y Networking de Alto Nivel","image":{"height":200,"width":200,"url":"https://krnivoro.com/assets/img/logo-krnivoro-og.jpg","@type":"imageObject"},"name":"Krnivoro Experiencias Gastronómicas y Networking de Alto Nivel","url":"https://krnivoro.com/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Krnivoro"},"description":"Conectamos líderes visionarios a través de sabores memorables, vínculos estratégicos y experiencias exclusivas que trascienden fronteras.","headline":"Krnivoro Experiencias Gastronómicas y Networking de Alto Nivel","image":{"height":200,"width":200,"url":"https://krnivoro.com/assets/img/logo-krnivoro-og.jpg","@type":"imageObject"},"name":"Krnivoro Experiencias Gastronómicas y Networking de Alto Nivel","url":"https://krnivoro.com/"}</script>
 <!-- End Jekyll SEO tag -->
 <link type="application/atom+xml" rel="alternate" href="https://krnivoro.com/feed.xml" title="Krnivoro | Experiencias Gastronómicas y Networking de Alto Nivel" /><!-- SEO Meta Tags -->
 <meta name="description" content="">
