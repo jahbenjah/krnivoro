@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-$mysqli = new mysqli("localhost", "karnivor_krnivoro", "karnivor_krnivoro", "karnivor_krnivoro01");
+$mysqli = new mysqli("localhost", "javie320_krnivoro", "javie320_krnivoro", "javie320_krnivoro");
 if ($mysqli->connect_errno) {
     echo json_encode(["error" => "Fallo conexión"]);
     exit;
