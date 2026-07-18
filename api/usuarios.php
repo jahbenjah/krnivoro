@@ -7,7 +7,7 @@ $pdo = getPDO();
 
 // Obtener método y datos
 $method = $_SERVER['REQUEST_METHOD'];
-$data = json_decode(file_get_contents('php://input'), true);
+$data = json_decode($raw, true) ?: [];
 
 // LISTAR miembros del directorio
 if ($method === 'GET') {
@@ -16,6 +16,10 @@ if ($method === 'GET') {
     exit;
 }
 
+if (empty($data)) {
+    $raw = file_get_contents('php://input');
+    $data = json_decode($raw, true) ?: [];
+}
 // REGISTRAR nuevo miembro (aprobado=0 por defecto)
 if ($method === 'POST') {
     // Validación backend
