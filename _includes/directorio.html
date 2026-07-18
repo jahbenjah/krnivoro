@@ -47,7 +47,7 @@
             <div class="col-md-4">
                 <div class="card text-center p-3">
                     <div class="mx-auto mb-3" style="width:120px; height:120px;">
-                        <img id="preview-imagen" src="/assets/img/team/default-avatar.png" alt="Previsualización"
+                        <img id="preview-imagen" src="/assets/img/team/team-1.jpg.webp" alt="Previsualización"
                             class="rounded-circle" style="width:120px; height:120px; object-fit:cover;">
                     </div>
                     <h5 id="preview-nombre">Nombre Apellido</h5>
@@ -184,17 +184,31 @@
             // });
         })();
 
-        // Envío del formulario vía fetch a /api/usuarios.php
+ // Envío del formulario vía fetch a /api/usuarios.php
 const form = document.getElementById('registro-directorio');
-const nombre = document.getElementById('nombre');
 
 form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
+    // Referencias a los elementos de feedback
+    const loadingDiv = document.querySelector('.loading');
+    const errorDiv = document.querySelector('.error-message');
+    const sentDiv = document.querySelector('.sent-message');
+
+    // Resetear estados visuales antes del envío
+    loadingDiv.style.display = 'block';
+    errorDiv.style.display = 'none';
+    errorDiv.textContent = '';
+    sentDiv.style.display = 'none';
+
+    // Capturar todos los campos del formulario automáticamente
     const data = new FormData(form);
-    data.set('nombre', nombre.value.trim());
+
+    // Normalizar valores eliminando espacios en blanco innecesarios si es necesario
+    data.set('nombre', document.getElementById('nombre').value.trim());
     data.set('password', document.getElementById('password').value.trim());
 
+    // Adjuntar la imagen en base64 si existe en el entorno global
     if (window.imagenBase64) {
         data.set('imagen_base64', window.imagenBase64);
     }
@@ -205,17 +219,31 @@ form.addEventListener('submit', async function (e) {
             body: data
         });
 
+        // Ocultar indicador de carga al recibir respuesta
+        loadingDiv.style.display = 'none';
+
+        if (!response.ok) {
+            throw new Error(`Error en el servidor: ${response.status}`);
+        }
+
         const result = await response.json();
-        if (result.success) {
+
+        // Validar basándose en tu cURL previo que devuelve un "status" ("success" o "error")
+        if (result.status === 'success' || result.success === true) {
             form.reset();
-            document.querySelector('.sent-message').style.display = 'block';
+            sentDiv.style.display = 'block';
+            
+            // Opcional: Limpiar variable base64 si manejas un contenedor de vista previa
+            if (window.imagenBase64) window.imagenBase64 = null; 
         } else {
-            document.querySelector('.error-message').textContent = result.error || 'Error al registrar.';
-            document.querySelector('.error-message').style.display = 'block';
+            errorDiv.textContent = result.message || result.error || 'Error al registrar.';
+            errorDiv.style.display = 'block';
         }
     } catch (err) {
-        document.querySelector('.error-message').textContent = 'Error de red o del servidor.';
-        document.querySelector('.error-message').style.display = 'block';
+        loadingDiv.style.display = 'none';
+        errorDiv.textContent = 'Error de red o del servidor al procesar la solicitud.';
+        errorDiv.style.display = 'block';
+        console.error(err);
     }
 });
     </script>
